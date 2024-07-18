@@ -1,0 +1,31 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout pageTitle={frontmatter.title}>
+  <div class="max-w-prose mx-auto mt-8">
+    <h1 class="text-3xl text-center">{frontmatter.title}</h1>
+    <p class="text-center mt-4 text-zinc-700 text-sm">
+      {frontmatter.shortDescription}
+    </p>
+    <p class="text-center mt-2 text-zinc-700 text-sm">
+      Date: {frontmatter.date}
+    </p>
+    <div class="relative mt-6">
+      <div class="relative h-60 min-[500px]:h-72 min-[600px]:h-80">
+        <img
+          class="object-cover"
+          src={frontmatter.cover.url}
+          alt={frontmatter.cover.alt}
+        />
+      </div>
+      <p class="text-sm text-zinc-600 text-center">
+        {frontmatter.cover.caption}
+      </p>
+    </div>
+    <div class="prose prose-p:text-pretty prose-li:text-pretty">
+      <slot />
+    </div>
+  </div>
+</Layout>

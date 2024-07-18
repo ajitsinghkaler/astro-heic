@@ -1,0 +1,20 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+// Supports weights 100-900
+import "@fontsource-variable/noto-sans";
+---
+
+<body class="h-screen flex flex-col">
+  <Header />
+  <div class="flex-grow text-pretty">
+    <slot />
+  </div>
+  <Footer />
+</body>
+
+<style>
+  body {
+    font-family: "Noto Sans Variable", sans-serif;
+  }
+</style>
