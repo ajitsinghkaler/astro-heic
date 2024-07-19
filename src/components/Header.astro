@@ -13,40 +13,40 @@
       </a>
     </div>
     <div class="ml-2 flex gap-2">
-      <div
-        class="font-semibold px-4 py-2 hover:bg-zinc-100 rounded flex items-center"
+      <button
+        class="font-semibold px-4 py-2 hover:bg-zinc-100 rounded flex items-center relative"
         id="appsDropdownButton"
       >
         Tools <span class="text-[8px] mt-1 ml-1">&#9660;</span>
-    </div>
+      </button>
       <div
-        class="absolute hidden bg-white text-gray-800 border rounded shadow-lg w-40"
+        class="absolute hidden bg-white text-gray-800 border rounded shadow-lg w-34 mt-10 border z-30"
         id="appsDropdown"
       >
         <a
           href="/heic-to-pdf/"
-          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
         >
           HEIC to PDF
         </a>
 
         <a
           href="/heic-to-jpg/"
-          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
         >
           HEIC to JPG
         </a>
 
         <a
           href="/heic-to-png/"
-          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
         >
           HEIC to PNG
         </a>
 
         <a
           href="/heic-to-webp/"
-          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
         >
           HEIC to WEBP
         </a>
@@ -60,27 +60,19 @@
     </div>
   </nav>
 </header>
+
 <script>
   const appsDropdownButton = document.getElementById("appsDropdownButton");
   const appsDropdown = document.getElementById("appsDropdown");
 
-  appsDropdownButton?.addEventListener("mouseover", function () {
-    appsDropdown?.classList.remove("hidden");
+  appsDropdownButton?.addEventListener("click", function () {
+    appsDropdown?.classList.toggle("hidden");
   });
 
-  appsDropdownButton?.addEventListener("mouseout", function (event) {
-    if (!appsDropdown?.contains(event.relatedTarget as Node)) {
+  // Close the dropdown if clicked outside
+  window.addEventListener("click", function (event) {
+    if (!appsDropdownButton?.contains(event.target as Node) && !appsDropdown?.contains(event.target as Node)) {
       appsDropdown?.classList.add("hidden");
-    }
-  });
-
-  appsDropdown?.addEventListener("mouseover", function () {
-    appsDropdown?.classList.remove("hidden");
-  });
-
-  appsDropdown?.addEventListener("mouseout", function (event) {
-    if (!appsDropdownButton?.contains(event.relatedTarget as Node)) {
-      appsDropdown.classList.add("hidden");
     }
   });
 </script>
