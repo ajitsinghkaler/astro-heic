@@ -1,34 +1,86 @@
 <header class="border-b">
-    <nav
-      class="container max-w-4xl mx-auto flex items-center flex-wrap py-2 px-4"
-    >
-      <div class="flex items-center flex-shrink-0 text-white mr-2">
+  <nav
+    class="container max-w-4xl mx-auto flex items-center flex-wrap py-2 px-4"
+  >
+    <div class="flex items-center flex-shrink-0 text-white mr-2">
+      <a href="/" class="text-xl sm:text-2xl font-semibold text-gray-800">
+        <img
+          src="assets/logo.svg"
+          height="50"
+          width="50"
+          alt="HEIC Converter logo"
+        />
+      </a>
+    </div>
+    <div class="ml-2 flex gap-2">
+      <div
+        class="font-semibold px-4 py-2 hover:bg-zinc-100 rounded flex items-center"
+        id="appsDropdownButton"
+      >
+        Tools <span class="text-[8px] mt-1 ml-1">&#9660;</span>
+    </div>
+      <div
+        class="absolute hidden bg-white text-gray-800 border rounded shadow-lg w-40"
+        id="appsDropdown"
+      >
         <a
-          href="/"
-          class="text-xl sm:text-2xl font-semibold text-gray-800"
+          href="/heic-to-pdf/"
+          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
         >
-          <img
-            src="assets/logo.svg"
-            height="50"
-            width="50"
-            alt="HEIC Converter logo"
-          />
+          HEIC to PDF
+        </a>
+
+        <a
+          href="/heic-to-jpg/"
+          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
+        >
+          HEIC to JPG
+        </a>
+
+        <a
+          href="/heic-to-png/"
+          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
+        >
+          HEIC to PNG
+        </a>
+
+        <a
+          href="/heic-to-webp/"
+          class="block p-4 hover:bg-zinc-100 whitespace-nowrap"
+        >
+          HEIC to WEBP
         </a>
       </div>
-      <div class="ml-2 flex gap-2">
-        <p-menu #menu [model]="items" [popup]="true" />
-        <button
-          class="font-semibold px-4 py-2 hover:bg-zinc-100 rounded flex items-center"
-          (click)="menu.toggle($event)"
-        >
-          Tools <span class="text-[8px] mt-1 ml-1">&#9660;</span>
-        </button>
-        <a
-          class="font-semibold px-4 py-2 hover:bg-zinc-100 rounded flex items-center"
-          href="/blog"
-        >
-          Blog
-        </a>
-      </div>
-    </nav>
-  </header>
+      <a
+        class="font-semibold px-4 py-2 hover:bg-zinc-100 rounded flex items-center"
+        href="/blog"
+      >
+        Blog
+      </a>
+    </div>
+  </nav>
+</header>
+<script>
+  const appsDropdownButton = document.getElementById("appsDropdownButton");
+  const appsDropdown = document.getElementById("appsDropdown");
+
+  appsDropdownButton?.addEventListener("mouseover", function () {
+    appsDropdown?.classList.remove("hidden");
+  });
+
+  appsDropdownButton?.addEventListener("mouseout", function (event) {
+    if (!appsDropdown?.contains(event.relatedTarget as Node)) {
+      appsDropdown?.classList.add("hidden");
+    }
+  });
+
+  appsDropdown?.addEventListener("mouseover", function () {
+    appsDropdown?.classList.remove("hidden");
+  });
+
+  appsDropdown?.addEventListener("mouseout", function (event) {
+    if (!appsDropdownButton?.contains(event.relatedTarget as Node)) {
+      appsDropdown.classList.add("hidden");
+    }
+  });
+</script>
