@@ -1,6 +1,6 @@
 import { Component, inject, signal } from "@angular/core";
-import { ConvertService } from "../services/convert.service";
 import { NgOptimizedImage } from "@angular/common";
+import { PdfService } from "../services/pdf.service";
 
 @Component({
   standalone: true,
@@ -112,7 +112,7 @@ import { NgOptimizedImage } from "@angular/common";
   imports: [NgOptimizedImage],
 })
 export class PdfComponent {
-  convertService = inject(ConvertService);
+  pdfService = inject(PdfService);
   selectedFiles = signal<File[]>([]);
   loading = signal(false);
   pdfBlobUrl = signal<string>("");
@@ -135,9 +135,8 @@ export class PdfComponent {
   async convertHeicToPdf() {
     this.loading.set(true);
     try {
-      const result = (await this.convertService.convertFiles(
+      const result = (await this.pdfService.convertToPdf(
         this.selectedFiles(),
-        "doc/pdf"
       )) as string;
       this.pdfBlobUrl.set(result);
       this.loading.set(false);
