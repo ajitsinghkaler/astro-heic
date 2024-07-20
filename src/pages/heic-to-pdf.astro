@@ -1,58 +1,54 @@
 ---
-import HEICtoPDF from "../components/HEICtoPDF.astro";
-import PDFCard from "../components/PDFCard.astro";
+import { PdfComponent } from "../components/pdf.component";
 import Layout from "../layout/Layout.astro";
 ---
-
-<p-toast></p-toast>
 <Layout>
-<h1 class="text-center font-bold text-4xl mt-12 mb-8">Convert HEIC to PDF</h1>
-<HEICtoPDF >
-  <PDFCard />
-</HEICtoPDF>
-<div class="mt-20">
-  <h2 class="text-2xl font-bold mb-8 text-center">HEIC to PDF Features</h2>
-  <ul class="space-y-4">
-    <li>
-      <strong>HEIC to PDF Converter:</strong> Easily convert your HEIC files directly
-      to PDF.
-    </li>
-    <li>
-      <strong>Convert HEIC File to PDF:</strong> Transform any HEIC file into a PDF
-      document with a simple click.
-    </li>
-    <li>
-      <strong>Multiple HEIC to PDF:</strong> Convert multiple HEIC images into a
-      single PDF files.
-    </li>
-    <li>
-      <strong>Free:</strong> Use our service for free without any cost.
-    </li>
-    <li>
-      <strong>Compatability:</strong> Directly convert HEIC files to PDF right from
-      your iPhone, android, mac etc.
-    </li>
-    <li>
-      <strong>Secure:</strong>To ensure your data stays private with all
-      conversions processed on your device—no uploads to external servers.
-    </li>
-  </ul>
-</div>
-<div class="my-20">
-  <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
-    Why Convert HEIC to PDF
-  </h2>
-  <p class="text-pretty">
-    Converting HEIC files to PDF is beneficial for several reasons. PDF is a
-    widely accepted format that ensures your images can be viewed and shared
-    across all devices and platforms. Using our converter, you can effortlessly
-    change HEIC files to PDF with just a few clicks. This process helps you
-    maintain the quality of your images while making them more accessible. Our
-    tool also supports batch conversions and merging multiple HEIC files into a
-    single PDF, which can save you a lot of time. Best of all, our service is
-    completely free and operates securely on your device, ensuring your data
-    remains private. Whether you are using an iPhone or a Mac, converting your
-    HEIC files to PDF has never been easier or more secure.
-  </p>
-</div>
+  <h1 class="text-center font-bold text-4xl mt-12 mb-8">Convert HEIC to PDF</h1>
+  <PdfComponent client:visible />
+  <div class="mt-20">
+    <h2 class="text-2xl font-bold mb-8 text-center">HEIC to PDF Features</h2>
+    <ul class="space-y-4">
+      <li>
+        <strong>HEIC to PDF Converter:</strong> Easily convert your HEIC files directly
+        to PDF.
+      </li>
+      <li>
+        <strong>Convert HEIC File to PDF:</strong> Transform any HEIC file into a
+        PDF document with a simple click.
+      </li>
+      <li>
+        <strong>Multiple HEIC to PDF:</strong> Convert multiple HEIC images into
+        a single PDF files.
+      </li>
+      <li>
+        <strong>Free:</strong> Use our service for free without any cost.
+      </li>
+      <li>
+        <strong>Compatability:</strong> Directly convert HEIC files to PDF right
+        from your iPhone, android, mac etc.
+      </li>
+      <li>
+        <strong>Secure:</strong>To ensure your data stays private with all
+        conversions processed on your device—no uploads to external servers.
+      </li>
+    </ul>
+  </div>
+  <div class="my-20">
+    <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
+      Why Convert HEIC to PDF
+    </h2>
+    <p class="text-pretty">
+      Converting HEIC files to PDF is beneficial for several reasons. PDF is a
+      widely accepted format that ensures your images can be viewed and shared
+      across all devices and platforms. Using our converter, you can
+      effortlessly change HEIC files to PDF with just a few clicks. This process
+      helps you maintain the quality of your images while making them more
+      accessible. Our tool also supports batch conversions and merging multiple
+      HEIC files into a single PDF, which can save you a lot of time. Best of
+      all, our service is completely free and operates securely on your device,
+      ensuring your data remains private. Whether you are using an iPhone or a
+      Mac, converting your HEIC files to PDF has never been easier or more
+      secure.
+    </p>
+  </div>
 </Layout>

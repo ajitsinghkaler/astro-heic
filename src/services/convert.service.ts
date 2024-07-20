@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { jsPDF } from 'jspdf';
-import { ImageBlobUrls } from '../interface/image-blob-urls';
+import type { ImageBlobUrls } from './image-blob-urls';
 import JSZip from 'jszip';
 
 @Injectable({
