@@ -5,7 +5,7 @@
     <div class="flex items-center flex-shrink-0 text-white mr-2">
       <a href="/" class="text-xl sm:text-2xl font-semibold text-gray-800">
         <img
-          src="assets/logo.svg"
+          src="/assets/logo.svg"
           height="50"
           width="50"
           alt="HEIC Converter logo"
@@ -25,38 +25,25 @@
       >
         <a
           href="/heic-to-pdf/"
-          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap">HEIC to PDF</a
         >
-          HEIC to PDF
-        </a>
-
         <a
           href="/heic-to-jpg/"
-          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap">HEIC to JPG</a
         >
-          HEIC to JPG
-        </a>
-
         <a
           href="/heic-to-png/"
-          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap">HEIC to PNG</a
         >
-          HEIC to PNG
-        </a>
-
         <a
           href="/heic-to-webp/"
-          class="block p-3 hover:bg-zinc-100 whitespace-nowrap"
+          class="block p-3 hover:bg-zinc-100 whitespace-nowrap">HEIC to WEBP</a
         >
-          HEIC to WEBP
-        </a>
       </div>
       <a
         class="font-semibold px-4 py-2 hover:bg-zinc-100 rounded flex items-center"
-        href="/blog"
+        href="/blog">Blog</a
       >
-        Blog
-      </a>
     </div>
   </nav>
 </header>
@@ -65,14 +52,19 @@
   const appsDropdownButton = document.getElementById("appsDropdownButton");
   const appsDropdown = document.getElementById("appsDropdown");
 
-  appsDropdownButton?.addEventListener("click", function () {
-    appsDropdown?.classList.toggle("hidden");
-  });
+  if (appsDropdownButton && appsDropdown) {
+    appsDropdownButton.addEventListener("click", () => {
+      appsDropdown.classList.toggle("hidden");
+    });
 
-  // Close the dropdown if clicked outside
-  window.addEventListener("click", function (event) {
-    if (!appsDropdownButton?.contains(event.target as Node) && !appsDropdown?.contains(event.target as Node)) {
-      appsDropdown?.classList.add("hidden");
-    }
-  });
+    window.addEventListener("click", (event) => {
+      if (
+        event.target instanceof Node &&
+        !appsDropdownButton.contains(event.target) &&
+        !appsDropdown.contains(event.target)
+      ) {
+        appsDropdown.classList.add("hidden");
+      }
+    });
+  }
 </script>
