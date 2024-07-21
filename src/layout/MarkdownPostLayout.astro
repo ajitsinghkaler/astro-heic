@@ -12,32 +12,34 @@ const coverImage = await import(`../assets/blog/${frontmatter.cover.image}`);
   ogTitle={frontmatter.title}
 >
   <div class="max-w-prose mx-auto mt-8 p-4 mb-4">
-    <h1 class="text-3xl text-center">{frontmatter.title}</h1>
-    <p class="text-center mt-4 text-zinc-700 text-sm">
-      {frontmatter.shortDescription}
-    </p>
-    <p class="text-center mt-2 text-zinc-700 text-sm">
-      Date: {
-        new Date(frontmatter.date).toLocaleDateString("en-us", {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        })
-      }
-    </p>
-    <div class="relative mt-6">
-      <Image
-        src={coverImage.default}
-        alt={frontmatter.cover.alt}
-        loading="eager"
-        densities={[0.1, 0.5, 1]}
-      />
-      <p class="text-sm text-zinc-600 text-center">
-        {frontmatter.cover.caption}
+    <article>
+      <h1 class="text-3xl text-center">{frontmatter.title}</h1>
+      <p class="text-center mt-4 text-zinc-700 text-sm">
+        {frontmatter.shortDescription}
       </p>
-    </div>
-    <div class="prose prose-p:text-pretty prose-li:text-pretty mt-5">
-      <slot />
-    </div>
+      <p class="text-center mt-2 text-zinc-700 text-sm">
+        Date: {
+          new Date(frontmatter.date).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+        }
+      </p>
+      <div class="relative mt-6">
+        <Image
+          src={coverImage.default}
+          alt={frontmatter.cover.alt}
+          loading="eager"
+          densities={[0.1, 0.5, 1]}
+        />
+        <p class="text-sm text-zinc-600 text-center">
+          {frontmatter.cover.caption}
+        </p>
+      </div>
+      <div class="prose prose-p:text-pretty prose-li:text-pretty mt-5">
+        <slot />
+      </div>
+    </article>
   </div>
 </Layout>
