@@ -3,8 +3,13 @@ import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout pageTitle={frontmatter.title}>
-  <div class="max-w-prose mx-auto mt-8">
+<Layout
+  title={frontmatter.title}
+  description={frontmatter.shortDescription}
+  ogImage={frontmatter.cover.ogImage}
+  ogTitle={frontmatter.title}
+>
+  <div class="max-w-prose mx-auto mt-8 p-4 mb-4">
     <h1 class="text-3xl text-center">{frontmatter.title}</h1>
     <p class="text-center mt-4 text-zinc-700 text-sm">
       {frontmatter.shortDescription}
@@ -16,7 +21,7 @@ const { frontmatter } = Astro.props;
       <div class="relative h-60 min-[500px]:h-72 min-[600px]:h-80">
         <img
           class="object-cover"
-          src={frontmatter.cover.url}
+          src={frontmatter.cover.image}
           alt={frontmatter.cover.alt}
         />
       </div>
@@ -24,7 +29,7 @@ const { frontmatter } = Astro.props;
         {frontmatter.cover.caption}
       </p>
     </div>
-    <div class="prose prose-p:text-pretty prose-li:text-pretty">
+    <div class="prose prose-p:text-pretty prose-li:text-pretty mt-5">
       <slot />
     </div>
   </div>

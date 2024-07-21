@@ -1,13 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import Logo from "../assets/logo.svg";
+---
+
 <footer class="relative py-20 flex flex-wrap container mx-auto max-w-4xl">
   <div class="w-full md:w-1/2 px-4">
     <a aria-label="Home" href="/">
       <div class="flex justify-center">
-        <img
-          src="/assets/logo.svg"
-          height="50"
-          width="50"
-          alt="HEIC Converter logo"
-        />
+        <Image src={Logo}  alt="HEIC Converter logo" loading="eager"/>
+
         <!-- <h1 class="font-bold">Stater</h1> -->
       </div>
     </a>
@@ -53,6 +54,7 @@
       ><img
         src="https://www.ontoplist.com/images/ontoplist31.png?id=667f88615838f"
         alt="Best Digital Marketing Agencies - OnToplist.com"
+        loading="lazy"
       /></a
     >
   </div>

@@ -1,33 +1,46 @@
 ---
 import { WebpComponent } from "../components/webp.component";
 import Layout from "../layout/Layout.astro";
+const title = "Convert HEIC to WEBP for free";
+const description =
+  "HEIC to WebP: Optimize your images by converting HEIC files to WebP format, ensuring faster loading times and reduced file sizes, directly on your device.";
+const ogImage = "/og-image/heic-to-webp.png";
+const ogTitle = "HEIC to WEBP: Convert HEIC to high-quality WEBPs for free.";
 ---
 
-<Layout>
-    <h1 class="text-center font-bold text-4xl mt-12 mb-8">Convert HEIC to WEBP</h1>
+<Layout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogTitle={ogTitle}
+>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-center font-bold text-4xl mt-12 mb-8">
+      Convert HEIC to WEBP
+    </h1>
     <WebpComponent client:visible />
     <div class="mt-20">
       <h2 class="text-2xl font-bold mb-8 text-center">HEIC to WEBP Features</h2>
       <ul class="space-y-4">
         <li>
-          <strong>HEIC to WebP Converter:</strong> Convert HEIC images to WebP
-          for optimized web usage.
+          <strong>HEIC to WebP Converter:</strong> Convert HEIC images to WebP for
+          optimized web usage.
         </li>
         <li>
           <strong>Convert HEIC to WebP on iPhone:</strong> Directly convert your
           HEIC files to WebP on your iPhone.
         </li>
         <li>
-          <strong>Multiple HEIC to WebP:</strong> Batch convert multiple HEIC
-          images to WebP.
+          <strong>Multiple HEIC to WebP:</strong> Batch convert multiple HEIC images
+          to WebP.
         </li>
         <li>
-          <strong>Merge HEIC to WebP:</strong> Easily merge several HEIC files
-          into a single WebP file.
+          <strong>Merge HEIC to WebP:</strong> Easily merge several HEIC files into
+          a single WebP file.
         </li>
         <li>
-          <strong>Free HEIC to WebP Converter:</strong> Convert your HEIC files
-          to WebP at no cost.
+          <strong>Free HEIC to WebP Converter:</strong> Convert your HEIC files to
+          WebP at no cost.
         </li>
         <li>
           <strong>Convert HEIC File to WebP Free Online:</strong> Use our online
@@ -54,5 +67,5 @@ import Layout from "../layout/Layout.astro";
         WebP is an excellent option.
       </p>
     </div>
-    </Layout>
-    
+  </div>
+</Layout>

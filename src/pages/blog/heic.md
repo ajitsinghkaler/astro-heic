@@ -7,7 +7,7 @@ cover:
    image: 'assets/blog/HEIC.webp'
    alt: 'HEIC file with a question mark.'
    caption: 'What is a HEIC file? '
-   ogImage: 'assets/blog/og-image/HEIC.png'
+   ogImage: '/og-image/blog/HEIC.png'
 
 ---
 

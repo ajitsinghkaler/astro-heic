@@ -1,56 +1,71 @@
 ---
 import { JpgComponent } from "../components/jpg.component";
 import Layout from "../layout/Layout.astro";
+const title = 'Convert HEIC to JPG for free';
+const description =
+  "HEIC to JPEG: Quickly convert HEIC files to JPEG for broad compatibility with image editing tools and web usage, ensuring privacy with on-device processing.";
+const ogImage = "/og-image/heic-to-jpg.png";
+const ogTitle = "HEIC to JPG: Convert HEIC to high-quality JPGs for free.";
 ---
 
-<Layout>
-  <h1 class="text-center font-bold text-4xl mt-12 mb-8">Convert HEIC to JPG</h1>
-  <JpgComponent client:visible />
-  <div class="mt-20">
-    <h2 class="text-2xl font-bold mb-8 text-center">HEIC to JPG Features</h2>
-    <ul class="space-y-4">
-      <li>
-        <strong>HEIC to JPEG Converter:</strong> Convert HEIC files to high-quality
-        JPEG in seconds.
-      </li>
-      <li>
-        <strong>Convert HEIC to JPEG on iPhone:</strong> Easily change HEIC images
-        to JPEG format on your iPhone.
-      </li>
-      <li>
-        <strong>Multiple HEIC to JPEG:</strong> Batch process several HEIC files
-        into JPEGs simultaneously.
-      </li>
-      <li>
-        <strong>Merge HEIC to JPEG:</strong> Combine multiple HEIC images into a
-        single JPEG file.
-      </li>
-      <li>
-        <strong>Free HEIC to JPEG Converter:</strong> Enjoy our HEIC to JPEG conversion
-        service absolutely free.
-      </li>
-      <li>
-        <strong>Convert HEIC File to JPEG Free Online:</strong> Use our online tool
-        to convert HEIC files to JPEG without any charge.
-      </li>
-    </ul>
-  </div>
-  <div class="my-20">
-    <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
-      Why Convert HEIC to JPEG
-    </h2>
-    <p class="text-pretty">
-      Converting HEIC files to JPG is a smart move for several reasons. JPG is
-      one of the most widely used image formats, compatible with virtually all
-      devices and platforms. This means your photos will be easily viewable and
-      shareable without any compatibility issues. Using our converter, you can
-      quickly and effortlessly change HEIC to JPG, whether you're on an iPhone,
-      Mac, or Windows device. Our tool supports batch conversion, allowing you
-      to convert multiple HEIC files to JPG at once, saving you valuable time.
-      Additionally, our service is completely free and operates securely on your
-      device, ensuring that your data stays private. Whether you need to convert
-      HEIC files to JPG for editing, sharing, or simply viewing on different
-      devices, our converter makes the process simple and efficient.
-    </p>
+<Layout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogTitle={ogTitle}
+>
+  <div class="max-w-4xl mx-auto px-4">
+    <h1 class="text-center font-bold text-4xl mt-12 mb-8">
+      Convert HEIC to JPG
+    </h1>
+    <JpgComponent client:visible />
+    <div class="mt-20">
+      <h2 class="text-2xl font-bold mb-8 text-center">HEIC to JPG Features</h2>
+      <ul class="space-y-4">
+        <li>
+          <strong>HEIC to JPEG Converter:</strong> Convert HEIC files to high-quality
+          JPEG in seconds.
+        </li>
+        <li>
+          <strong>Convert HEIC to JPEG on iPhone:</strong> Easily change HEIC images
+          to JPEG format on your iPhone.
+        </li>
+        <li>
+          <strong>Multiple HEIC to JPEG:</strong> Batch process several HEIC files
+          into JPEGs simultaneously.
+        </li>
+        <li>
+          <strong>Merge HEIC to JPEG:</strong> Combine multiple HEIC images into
+          a single JPEG file.
+        </li>
+        <li>
+          <strong>Free HEIC to JPEG Converter:</strong> Enjoy our HEIC to JPEG conversion
+          service absolutely free.
+        </li>
+        <li>
+          <strong>Convert HEIC File to JPEG Free Online:</strong> Use our online
+          tool to convert HEIC files to JPEG without any charge.
+        </li>
+      </ul>
+    </div>
+    <div class="my-20">
+      <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
+        Why Convert HEIC to JPEG
+      </h2>
+      <p class="text-pretty">
+        Converting HEIC files to JPG is a smart move for several reasons. JPG is
+        one of the most widely used image formats, compatible with virtually all
+        devices and platforms. This means your photos will be easily viewable
+        and shareable without any compatibility issues. Using our converter, you
+        can quickly and effortlessly change HEIC to JPG, whether you're on an
+        iPhone, Mac, or Windows device. Our tool supports batch conversion,
+        allowing you to convert multiple HEIC files to JPG at once, saving you
+        valuable time. Additionally, our service is completely free and operates
+        securely on your device, ensuring that your data stays private. Whether
+        you need to convert HEIC files to JPG for editing, sharing, or simply
+        viewing on different devices, our converter makes the process simple and
+        efficient.
+      </p>
+    </div>
   </div>
 </Layout>

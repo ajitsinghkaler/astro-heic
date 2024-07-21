@@ -1,57 +1,71 @@
 ---
 import { PngComponent } from "../components/png.component";
 import Layout from "../layout/Layout.astro";
+const title = "Convert HEIC to PNG for free";
+const description =
+  "HEIC to PNG: Convert HEIC to PNG for high-quality design and web use, with crossplatform compatability and ensuring maximum privacy with local processing";
+const ogImage = "/og-image/heic-to-png.png";
+const ogTitle = "HEIC to PNG: Convert HEIC to high-quality PNGs for free.";
 ---
 
-<Layout>
-  <h1 class="text-center font-bold text-4xl mt-12 mb-8">Convert HEIC to PNG</h1>
-  <PngComponent client:visible />
-  <div class="mt-20">
-    <h2 class="text-2xl font-bold mb-8 text-center">HEIC to PNG Features</h2>
-    <ul class="space-y-4">
-      <li>
-        <strong>HEIC to PNG Converter:</strong> Convert your HEIC images to PNG for
-        transparency support.
-      </li>
-      <li>
-        <strong>Convert HEIC to PNG on iPhone:</strong> Convert HEIC files to PNG
-        directly on your iPhone.
-      </li>
-      <li>
-        <strong>Multiple HEIC to PNG:</strong> Transform multiple HEIC images into
-        PNG format at once.
-      </li>
-      <li>
-        <strong>Merge HEIC to PNG:</strong> Merge several HEIC files into one PNG
-        image.
-      </li>
-      <li>
-        <strong>HEIC to PNG Converter Free:</strong> Use our converter to switch
-        HEIC to PNG for free.
-      </li>
-      <li>
-        <strong>Convert HEIC File to PNG Free Online:</strong> Access our free online
-        HEIC to PNG converter anytime.
-      </li>
-    </ul>
-  </div>
+<Layout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogTitle={ogTitle}
+>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-center font-bold text-4xl mt-12 mb-8">
+      Convert HEIC to PNG
+    </h1>
+    <PngComponent client:visible />
+    <div class="mt-20">
+      <h2 class="text-2xl font-bold mb-8 text-center">HEIC to PNG Features</h2>
+      <ul class="space-y-4">
+        <li>
+          <strong>HEIC to PNG Converter:</strong> Convert your HEIC images to PNG
+          for transparency support.
+        </li>
+        <li>
+          <strong>Convert HEIC to PNG on iPhone:</strong> Convert HEIC files to PNG
+          directly on your iPhone.
+        </li>
+        <li>
+          <strong>Multiple HEIC to PNG:</strong> Transform multiple HEIC images into
+          PNG format at once.
+        </li>
+        <li>
+          <strong>Merge HEIC to PNG:</strong> Merge several HEIC files into one PNG
+          image.
+        </li>
+        <li>
+          <strong>HEIC to PNG Converter Free:</strong> Use our converter to switch
+          HEIC to PNG for free.
+        </li>
+        <li>
+          <strong>Convert HEIC File to PNG Free Online:</strong> Access our free
+          online HEIC to PNG converter anytime.
+        </li>
+      </ul>
+    </div>
 
-  <div class="my-20">
-    <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
-      Why Convert HEIC to PNG
-    </h2>
-    <p class="text-pretty">
-      Converting HEIC files to PNG can be very beneficial, especially if you
-      need to maintain high quality and transparency in your images. PNG is a
-      widely used format that supports lossless compression, making it ideal for
-      images that require sharp details and transparency, such as logos and
-      graphics. Our HEIC to PNG converter makes the process simple and
-      efficient, whether you're using an iPhone, Mac, or Windows device. You can
-      convert multiple HEIC files to PNG at once, saving time and effort. Plus,
-      our service is completely free and processes everything on your device,
-      ensuring your data remains private and secure. Whether you're a designer
-      needing high-quality images or just want to share your photos without
-      losing quality, converting HEIC to PNG is the way to go.
-    </p>
+    <div class="my-20">
+      <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
+        Why Convert HEIC to PNG
+      </h2>
+      <p class="text-pretty">
+        Converting HEIC files to PNG can be very beneficial, especially if you
+        need to maintain high quality and transparency in your images. PNG is a
+        widely used format that supports lossless compression, making it ideal
+        for images that require sharp details and transparency, such as logos
+        and graphics. Our HEIC to PNG converter makes the process simple and
+        efficient, whether you're using an iPhone, Mac, or Windows device. You
+        can convert multiple HEIC files to PNG at once, saving time and effort.
+        Plus, our service is completely free and processes everything on your
+        device, ensuring your data remains private and secure. Whether you're a
+        designer needing high-quality images or just want to share your photos
+        without losing quality, converting HEIC to PNG is the way to go.
+      </p>
+    </div>
   </div>
 </Layout>

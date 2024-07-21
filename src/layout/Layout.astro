@@ -2,7 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "@fontsource-variable/noto-sans";
-const { title, description, ogUrl, ogImage } = Astro.props;
+const { title, description, ogUrl, ogImage, ogTitle } = Astro.props;
 ---
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +14,11 @@ const { title, description, ogUrl, ogImage } = Astro.props;
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta property="description" content={description}>
   <meta property="robots" content="index, follow"/>
-  <meta property="og:title" content={title}/>
+  <meta property="og:title" content={ogTitle}/>
   <meta property="og:description" content={description}/>
   <meta property="og:url" content={ogUrl}/>
   <meta property="og:image" content={ogImage}/>
-  <meta property="twitter:image:alt" content={title}/>
+  <meta property="twitter:image:alt" content={ogTitle}/>
 </head>
 <body class="h-screen flex flex-col">
   <Header />

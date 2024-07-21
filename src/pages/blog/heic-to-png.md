@@ -8,7 +8,7 @@ cover:
     image: 'assets/blog/heic-to-png.webp'
     alt: 'HEIC to PNG conversions.'
     caption: 'Convert HEIC files to PNG? '
-    ogImage: 'assets/blog/og-image/heic-to-png.png'
+    ogImage: '/og-image/blog/heic-to-png.png'
       
 
 

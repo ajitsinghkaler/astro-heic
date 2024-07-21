@@ -1,8 +1,12 @@
 ---
 import Layout from "../layout/Layout.astro";
+const description='Heic Converter Contact Form - Reach out to us for any queries or feedback.'
+const ogImage="/og-image/home.png"
+const title="Contact us for any queries"
+const ogTitle='Heic Converter Contact Form: Reach out to us for any queries or feedback.'
 ---
 
-<Layout>
+<Layout title={title} description={description} ogImage={ogImage} ogTitle={ogTitle}>
   <div class="max-w-4xl mx-auto py-20 px-4">
     <h1 class="px-2 mb-8 font-bold text-3xl">Contact Form</h1>
     <iframe
