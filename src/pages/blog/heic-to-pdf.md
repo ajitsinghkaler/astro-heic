@@ -5,7 +5,7 @@ date: '2024-06-19T10:19:49+0530'
 filename: 'heic-to-pdf'
 shortDescription: 'Learn how to easily convert HEIC files to PDF using free online tools, Adobe Photoshop, and built-in apps on Mac and Windows for seamless compatibility.'
 cover: 
-    image: '../assets/blog/heic-to-pdf.webp'
+    image: 'heic-to-pdf.png'
     alt: 'HEIC to PDF conversions.'
     caption: 'Convert HEIC files to PDF? '
     ogImage: '/og-image/blog/heic-to-pdf.png'

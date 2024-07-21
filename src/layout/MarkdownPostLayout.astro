@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
+const coverImage = await import(`../assets/blog/${frontmatter.cover.image}`);
 ---
 
 <Layout
@@ -15,16 +17,21 @@ const { frontmatter } = Astro.props;
       {frontmatter.shortDescription}
     </p>
     <p class="text-center mt-2 text-zinc-700 text-sm">
-      Date: {frontmatter.date}
+      Date: {
+        new Date(frontmatter.date).toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }
     </p>
     <div class="relative mt-6">
-      <div class="relative h-60 min-[500px]:h-72 min-[600px]:h-80">
-        <img
-          class="object-cover"
-          src={frontmatter.cover.image}
-          alt={frontmatter.cover.alt}
-        />
-      </div>
+      <Image
+        src={coverImage.default}
+        alt={frontmatter.cover.alt}
+        loading="eager"
+        densities={[0.1, 0.5, 1]}
+      />
       <p class="text-sm text-zinc-600 text-center">
         {frontmatter.cover.caption}
       </p>

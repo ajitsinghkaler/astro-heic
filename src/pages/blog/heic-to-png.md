@@ -5,7 +5,7 @@ date: '2024-07-18T10:19:49+0530'
 filename: 'heic-to-png'
 shortDescription: 'Learn how to easily convert HEIC files to PNG using free online tools, Adobe Photoshop, and built-in apps on Mac and Windows for seamless compatibility.'
 cover: 
-    image: 'assets/blog/heic-to-png.webp'
+    image: 'heic-to-png.png'
     alt: 'HEIC to PNG conversions.'
     caption: 'Convert HEIC files to PNG? '
     ogImage: '/og-image/blog/heic-to-png.png'
