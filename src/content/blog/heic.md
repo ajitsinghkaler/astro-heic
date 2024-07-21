@@ -1,13 +1,11 @@
 ---
-layout: ../../layout/MarkdownPostLayout.astro
 title: 'Understanding HEIC Files: The Modern Image Format'
 date: '2024-06-18T11:20:49+0530'
 shortDescription: 'HEIC files are high-efficiency image format files used by Apple devices to save storage while maintaining high image quality. They are a modern alternative to JPEG.'
-cover: 
-   image: 'HEIC.png'
-   alt: 'HEIC file with a question mark.'
-   caption: 'What is a HEIC file? '
-   ogImage: '/og-image/blog/HEIC.png'
+coverImage: '../../assets/blog/HEIC.png'
+coverAlt: 'HEIC file with a question mark.'
+coverCaption: 'What is a HEIC file? '
+coverOgImage: '/og-image/blog/HEIC.png'
 
 ---
 

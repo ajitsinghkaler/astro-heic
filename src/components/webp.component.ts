@@ -153,6 +153,7 @@ import type { ImageBlobUrls } from "../services/image-blob-urls";
   imports: [NgOptimizedImage],
 })
 export class WebpComponent {
+  static renderProviders = [ConvertService];
   convertService = inject(ConvertService);
   selectedFiles = signal<File[]>([]);
 

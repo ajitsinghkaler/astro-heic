@@ -112,6 +112,8 @@ import { PdfService } from "../services/pdf.service";
   imports: [NgOptimizedImage],
 })
 export class PdfComponent {
+  static renderProviders = [PdfService];
+
   pdfService = inject(PdfService);
   selectedFiles = signal<File[]>([]);
   loading = signal(false);

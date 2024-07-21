@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import Logo from "../assets/logo.svg";
 ---
 
@@ -7,7 +7,7 @@ import Logo from "../assets/logo.svg";
   <div class="w-full md:w-1/2 px-4">
     <a aria-label="Home" href="/">
       <div class="flex justify-center">
-        <Image src={Logo}  alt="HEIC Converter logo" loading="eager"/>
+        <Image src={Logo} alt="HEIC Converter logo" loading="eager" />
 
         <!-- <h1 class="font-bold">Stater</h1> -->
       </div>
@@ -51,10 +51,10 @@ import Logo from "../assets/logo.svg";
   </div>
   <div class="flex justify-center w-full mt-20">
     <a href="https://www.ontoplist.com/marketing-agencies/" target="_blank"
-      ><img
+      ><Image
         src="https://www.ontoplist.com/images/ontoplist31.png?id=667f88615838f"
         alt="Best Digital Marketing Agencies - OnToplist.com"
-        loading="lazy"
+        inferSize={true}
       /></a
     >
   </div>

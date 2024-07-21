@@ -7,7 +7,5 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://onlineheicconvert.com', 
-  integrations: [tailwind(), analogjsangular(), sitemap({
-    customFilename: 'sitemap.xml', // Ensures the sitemap is named sitemap.xml
-  })]
+  integrations: [tailwind(), analogjsangular(), sitemap()]
 });

@@ -1,12 +1,15 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../../layout/Layout.astro";
-const posts = await Astro.glob("./*.md");
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
 
-const description = "Heic Converter Blog - Your source for insights on HEIC conversion to various formats in a secure, reliable way that ensures privacy by on-device conversion.";
+const description =
+  "Heic Converter Blog - Your source for insights on HEIC conversion to various formats in a secure, reliable way that ensures privacy by on-device conversion.";
 const ogImage = "/og-image/blog.png";
 const title = "Heic Converter Blog: Conversion made Simple, Secure and Private";
-const ogTitle = "Heic Converter Blog: HEIC Conversion made Simple, Secure and Private";
+const ogTitle =
+  "Heic Converter Blog: HEIC Conversion made Simple, Secure and Private";
 ---
 
 <Layout
@@ -18,27 +21,21 @@ const ogTitle = "Heic Converter Blog: HEIC Conversion made Simple, Secure and Pr
   <div class="max-w-4xl mx-auto px-4">
     <h1 class="font-bold text-3xl my-8 text-center">Blog</h1>
     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-20">
-      {posts.map((post) => (
-        <a class="m-auto" href={post.url}>
-          <div class="text-red-500 border border-gray-200 rounded-lg shadow w-full max-w-sm">
-              <Image
-                src=`/blog/${post.frontmatter.cover.image}`
-                alt={post.frontmatter.cover.alt}
-                width={400}
-                loading="eager"
-                height={300}
-              />
-            <div class="p-4">
-              <h3 class="text-black text-lg font-bold">
-                {post.frontmatter.title}
-              </h3>
-              <p class="text-sm text-gray-500 mt-1 line-clamp-3">
-                {post.frontmatter.shortDescription}
-              </p>
+      {
+        posts.map((post) => (
+          <a class="m-auto" href={`/blog/${post.slug}/`}>
+            <div class="text-red-500 border border-gray-200 rounded-lg shadow w-full max-w-sm">
+              <Image src={post.data.coverImage} alt={post.data.coverAlt} loading="eager" />
+              <div class="p-4">
+                <h3 class="text-black text-lg font-bold">{post.data.title}</h3>
+                <p class="text-sm text-gray-500 mt-1 line-clamp-3">
+                  {post.data.shortDescription}
+                </p>
+              </div>
             </div>
-          </div>
-        </a>
-      ))}
+          </a>
+        ))
+      }
     </div>
   </div>
 </Layout>
