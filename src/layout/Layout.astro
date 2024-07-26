@@ -2,7 +2,8 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "@fontsource-variable/noto-sans";
-const { title, description, ogUrl, ogImage, ogTitle } = Astro.props;
+const { title, description, ogImage, ogTitle } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,13 +13,15 @@ const { title, description, ogUrl, ogImage, ogTitle } = Astro.props;
   <meta property="og:site_name" content="Heic Converter"/>
   <meta property="og:type" content="website"/>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <meta property="description" content={description}>
-  <meta property="robots" content="index, follow"/>
+  <meta name="description" content={description}>
+  <meta name="robots" content="index, follow"/>
   <meta property="og:title" content={ogTitle}/>
   <meta property="og:description" content={description}/>
-  <meta property="og:url" content={ogUrl}/>
+  <meta property="og:url" content={canonicalURL}/>
   <meta property="og:image" content={ogImage}/>
-  <meta property="twitter:image:alt" content={ogTitle}/>
+  <meta name="twitter:image:alt" content={ogTitle}/>
+  <meta property="og:image:alt" content={ogTitle}/>
+  <link rel="canonical" href={canonicalURL}/>
 </head>
 <body class="h-screen flex flex-col">
   <Header />
