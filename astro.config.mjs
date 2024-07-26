@@ -6,6 +6,15 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://onlineheicconvert.com', 
-  integrations: [tailwind(), analogjsangular(), sitemap()]
+  site: 'https://onlineheicconvert.com',
+  integrations: [tailwind(), analogjsangular(), sitemap({
+    serialize: (route) => {
+      if (route.url === 'https://onlineheicconvert.com/privacy/' || route.url === 'https://onlineheicconvert.com/tos/') {
+        route.priority = 0.5
+      } else {
+        route.priority = 1
+      }
+      return route
+    }
+  })]
 });

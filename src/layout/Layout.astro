@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import "@fontsource-variable/noto-sans";
 const { title, description, ogImage, ogTitle } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
 ---
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,10 +19,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:title" content={ogTitle}/>
   <meta property="og:description" content={description}/>
   <meta property="og:url" content={canonicalURL}/>
-  <meta property="og:image" content={ogImage}/>
+  <meta property="og:image" content={ogImageURL}/>
   <meta name="twitter:image:alt" content={ogTitle}/>
   <meta property="og:image:alt" content={ogTitle}/>
   <link rel="canonical" href={canonicalURL}/>
+  <link rel="sitemap" href="/sitemap-index.xml" />
 </head>
 <body class="h-screen flex flex-col">
   <Header />

@@ -5,7 +5,7 @@ shortDescription: 'HEIC files are high-efficiency image format files used by App
 coverImage: '../../assets/blog/HEIC.png'
 coverAlt: 'HEIC file with a question mark.'
 coverCaption: 'What is a HEIC file? '
-coverOgImage: '/og-image/blog/HEIC.png'
+coverOgImage: '/og-image/HEIC.png'
 
 ---
 

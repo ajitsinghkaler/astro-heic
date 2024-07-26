@@ -5,7 +5,7 @@ shortDescription: 'Learn how to easily convert HEIC files to PNG using free onli
 coverImage: '../../assets/blog/heic-to-png.png'
 coverAlt: 'HEIC to PNG conversions.'
 coverCaption: 'Convert HEIC files to PNG? '
-coverOgImage: '/og-image/blog/heic-to-png.png'
+coverOgImage: '/og-image/heic-to-png.png'
       
 
 

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: https://onlineheicconvert.com//sitemap-index.xml

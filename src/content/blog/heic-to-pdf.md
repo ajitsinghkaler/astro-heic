@@ -5,7 +5,7 @@ shortDescription: 'Learn how to easily convert HEIC files to PDF using free onli
 coverImage: '../../assets/blog/heic-to-pdf.png'
 coverAlt: 'HEIC to PDF conversions.'
 coverCaption: 'Convert HEIC files to PDF? '
-coverOgImage: '/og-image/blog/heic-to-pdf.png'
+coverOgImage: '/og-image/heic-to-pdf.png'
 ---
 
 HEIC (High-Efficiency Image Coding) files are becoming increasingly popular due to their efficient storage and high-quality image capabilities. However, sometimes you need to convert these files to a more universally accessible format like PDF. Whether for sharing, printing, or archiving, converting HEIC files to PDF can be straightforward with the right tools and methods. In this blog, we'll walk you through the steps to change HEIC to PDF effortlessly.
