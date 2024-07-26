@@ -86,6 +86,9 @@ import type { ImageBlobUrls } from "../services/image-blob-urls";
         <div
           class="flex justify-center items-center absolute top-0 left-0 w-full h-full flex-col"
         >
+        <div
+            class="w-10 h-10 border-4 border-blue-400 border-t-blue-500 rounded-full animate-spin"
+          ></div>
           <p class="mt-6 text-zinc-700 font-semibold">Converting...</p>
         </div>
         } @if(imageBlobUrls().length){
@@ -145,6 +148,11 @@ import type { ImageBlobUrls } from "../services/image-blob-urls";
         }
       </div>
     </div>
+    @if(error()){
+    <div class="text-red-600 bg-red-100 border border-red-600 rounded-lg mt-6">
+      <p class="text-sm font-semibold text-center p-2">{{ error() }}</p>
+    </div>
+    }
   `,
 
   imports: [NgOptimizedImage],
@@ -155,6 +163,7 @@ export class PngComponent {
   selectedFiles = signal<File[]>([]);
   loading = signal(false);
   imageBlobUrls = signal<ImageBlobUrls[]>([]);
+  error = signal("");
 
   onFilesChange(event: any) {
     this.selectedFiles.set(Array.from(event.target.files));
@@ -173,6 +182,8 @@ export class PngComponent {
 
   async convertHeicToPng() {
     this.loading.set(true);
+    this.error.set("");
+
     try {
       const result = (await this.convertService.convertFiles(
         this.selectedFiles(),
@@ -182,6 +193,9 @@ export class PngComponent {
       this.loading.set(false);
     } catch (error) {
       this.cancel();
+      this.error.set(
+        "An error occured while converting. Please try again or report on the contact us form."
+      );
     }
   }
 
@@ -190,6 +204,9 @@ export class PngComponent {
       await this.convertService.downloadZip(this.imageBlobUrls());
     } catch (error) {
       this.cancel();
+      this.error.set(
+        "An error occured while downloading. Please try again or report on the contact us form."
+      );
     }
   }
 }
