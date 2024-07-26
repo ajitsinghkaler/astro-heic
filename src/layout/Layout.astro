@@ -6,34 +6,37 @@ const { title, description, ogImage, ogTitle } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage, Astro.site);
 ---
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="utf-8">
-  <title>{title}</title>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta property="og:site_name" content="Heic Converter"/>
-  <meta property="og:type" content="website"/>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <meta name="description" content={description}>
-  <meta name="robots" content="index, follow"/>
-  <meta property="og:title" content={ogTitle}/>
-  <meta property="og:description" content={description}/>
-  <meta property="og:url" content={canonicalURL}/>
-  <meta property="og:image" content={ogImageURL}/>
-  <meta name="twitter:image:alt" content={ogTitle}/>
-  <meta property="og:image:alt" content={ogTitle}/>
-  <link rel="canonical" href={canonicalURL}/>
-  <link rel="sitemap" href="/sitemap-index.xml" />
-</head>
-<body class="h-screen flex flex-col">
-  <Header />
-  <div class="flex-grow text-pretty">
-    <slot />
-  </div>
-  <div class="border-t">
-    <Footer />
-  </div>
-</body>
+
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content="Heic Converter" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogTitle} />
+    <meta property="og:image:alt" content={ogTitle} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body class="h-screen flex flex-col">
+    <Header />
+    <div class="flex-grow text-pretty">
+      <slot />
+    </div>
+    <div class="border-t">
+      <Footer />
+    </div>
+  </body>
+</html>
 
 <style>
   body {
