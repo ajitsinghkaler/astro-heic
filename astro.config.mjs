@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://onlineheicconvert.com',
+  prefetch: true,
   integrations: [tailwind(), analogjsangular(), sitemap({
     serialize: (route) => {
       if (route.url === 'https://onlineheicconvert.com/privacy/' || route.url === 'https://onlineheicconvert.com/tos/') {
