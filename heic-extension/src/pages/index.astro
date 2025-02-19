@@ -1,0 +1,94 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image to PDF Converter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="flex items-center justify-center font-inter min-w-[28rem]"
+  >
+    <div class="max-w-md w-full bg-white p-8">
+      <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">
+        Image to PDF Converter
+      </h1>
+
+      <div class="mb-6">
+        <label
+          for="imageInput"
+          class="block text-sm font-medium text-gray-700 mb-2"
+          >Select Images</label
+        >
+        <div
+          class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:border-green-500 transition duration-300 relative"
+          id="dropzone"
+        >
+          <input
+            id="imageInput"
+            type="file"
+            accept=".png,.jpg,.jpeg,.webp"
+            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+            multiple
+          />
+          <div class="space-y-1 text-center">
+            <svg
+              class="mx-auto h-12 w-12 text-gray-400"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+            >
+              <path
+                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            <span
+              class="relative text-sm bg-white rounded-md font-medium text-green-600 hover:text-green-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-green-500"
+            >
+              Upload images
+            </span>
+            <p class="text-xs text-gray-500">
+              PNG, JPG, JPEG, WebP up to 10MB each
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="fileList" class="mb-6 space-y-2"></div>
+
+      <button
+        id="convertBtn"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center"
+      >
+        <svg
+          class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+        Convert to PDF
+      </button>
+
+      <p id="status" class="mt-4 text-center text-gray-600"></p>
+    </div>
+    <script src="../js/popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "heic-extension",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build && node build.js",
+    "dev:build": "astro build && node build.js",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.8.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.11.5",
+    "jspdf": "^2.5.1",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "archiver": "^7.0.1",
+    "vite": "^5.3.3"
+  }
+}
