@@ -14,13 +14,17 @@ export class PdfService {
     });
   }
   async convertToPdf(files: File[]): Promise<string> {
-    const heic2any = (await import("heic2any")).default;
+    const { heicTo } = await import("heic-to");
     const pdf = new jsPDF();
     const imagePromises = files.map((file, index) => {
       return new Promise<void>(async (resolve, reject) => {
         try {
-          const blob = await heic2any({ blob: file, toType: "image/jpeg" });
-          const imgData = await this.blobToDataUrl(blob as Blob);
+          const blob = await heicTo({
+            blob: file,
+            type: "image/jpeg",
+            quality: 0.92,
+          });
+          const imgData = await this.blobToDataUrl(blob);
           const img = new Image();
           img.onload = () => {
             // Calculate dimensions from pixels to points

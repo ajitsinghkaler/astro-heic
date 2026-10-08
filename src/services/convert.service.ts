@@ -22,33 +22,24 @@ export class ConvertService {
   async convertFiles(
     files: File[],
     outputFormat: "image/jpeg" | "image/png" | "image/webp"
-  ): Promise<ImageBlobUrls[] | string | void> {
+  ): Promise<ImageBlobUrls[]> {
+    const { heicTo } = await import("heic-to");
+    const format = this.getFormatName(outputFormat).toLowerCase();
+    const quality = outputFormat === "image/webp" ? 0.8 : 0.92;
+    const imageBlobUrls: ImageBlobUrls[] = [];
+
     try {
-      const heic2any = (await import("heic2any")).default;
-      if (outputFormat === "image/webp") {
-        return await this.convertToWebp(heic2any, files);
-      } else {
-        return await this.convertToImages(heic2any, outputFormat, files);
+      for (const [index, file] of files.entries()) {
+        const blob = await heicTo({ blob: file, type: outputFormat, quality });
+        imageBlobUrls.push({
+          url: URL.createObjectURL(blob),
+          name: `image_${index + 1}.${format}`,
+        });
       }
     } catch (e) {
       console.error(e);
-      alert(`Failed to convert HEIC to ${this.getFormatName(outputFormat)}.`);
-    }
-  }
-
-  private async convertToImages(
-    heic2any: any,
-    outputFormat: "image/jpeg" | "image/png",
-    files: File[]
-  ): Promise<ImageBlobUrls[]> {
-    const imageBlobUrls: ImageBlobUrls[] = [];
-
-    for (const file of files) {
-      const blob = await heic2any({ blob: file, toType: outputFormat });
-      const imageBlobUrl = URL.createObjectURL(blob as Blob);
-      const format = this.getFormatName(outputFormat).toLowerCase();
-      const name = `image_${files.indexOf(file) + 1}.${format}`;
-      imageBlobUrls.push({ url: imageBlobUrl, name });
+      imageBlobUrls.forEach(({ url }) => URL.revokeObjectURL(url));
+      throw e;
     }
     return imageBlobUrls;
   }
@@ -71,49 +62,6 @@ export class ConvertService {
     a.download = `${folderName}.zip`;
     a.click();
     URL.revokeObjectURL(url); // Revoke the URL for the zip file
-  }
-
-  private async convertToWebp(
-    heic2any: any,
-    files: File[]
-  ): Promise<ImageBlobUrls[]> {
-    const imageBlobPromises = files.map((file) => {
-      return new Promise<ImageBlobUrls>((resolve, reject) => {
-        heic2any({ blob: file, toType: "image/png" })
-          .then((blob: Blob) => {
-            const imageBlobUrl = URL.createObjectURL(blob);
-            const img = new Image();
-            img.onload = () => {
-              const canvas = document.createElement("canvas");
-              canvas.width = img.width;
-              canvas.height = img.height;
-              const ctx = canvas.getContext("2d");
-              ctx?.drawImage(img, 0, 0);
-              canvas.toBlob(
-                (blob: Blob | null) => {
-                  if (blob) {
-                    const webpUrl = URL.createObjectURL(blob);
-                    resolve({
-                      url: webpUrl,
-                      name: `image_${files.indexOf(file) + 1}.webp`,
-                    });
-                  } else {
-                    reject(new Error("Blob conversion failed"));
-                  }
-                },
-                "image/webp",
-                0.8
-              );
-            };
-            img.onerror = reject;
-            img.src = imageBlobUrl;
-          })
-          .catch(reject);
-      });
-    });
-
-    const imageBlobUrls = await Promise.all(imageBlobPromises);
-    return imageBlobUrls;
   }
 
   private async blobToDataUrl(blob: Blob): Promise<string> {
