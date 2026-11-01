@@ -2,7 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "@fontsource-variable/noto-sans";
-const { title, description, ogImage, ogTitle } = Astro.props;
+const { title, description, ogImage, ogTitle, ogType = 'website', schema } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage, Astro.site);
 ---
@@ -14,7 +14,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <title>{title}</title>
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:site_name" content="Heic Converter" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
@@ -27,12 +27,13 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />}
   </head>
   <body class="h-screen flex flex-col">
     <Header />
-    <div class="flex-grow text-pretty">
+    <main class="flex-grow text-pretty">
       <slot />
-    </div>
+    </main>
     <div class="border-t">
       <Footer />
     </div>

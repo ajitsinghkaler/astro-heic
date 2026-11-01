@@ -2,22 +2,41 @@
 import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site).toString();
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BlogPosting', headline: frontmatter.title, description: frontmatter.shortDescription,
+      datePublished: new Date(frontmatter.date).toISOString(), url, mainEntityOfPage: url,
+      image: new URL(frontmatter.coverOgImage, Astro.site).toString(), inLanguage: 'en',
+      author: { '@type': 'Organization', name: 'Online HEIC Convert', url: Astro.site?.toString() },
+      publisher: { '@type': 'Organization', name: 'Online HEIC Convert', url: Astro.site?.toString() } },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Online HEIC Convert', item: Astro.site?.toString() },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: new URL('/blog/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 3, name: frontmatter.title, item: url },
+    ] },
+  ],
+};
 ---
 
 <Layout
+  ogType="article"
+  schema={schema}
   title={frontmatter.title}
   description={frontmatter.shortDescription}
   ogImage={frontmatter.coverOgImage}
   ogTitle={frontmatter.title}
 >
   <div class="max-w-prose mx-auto mt-8 p-4 mb-4">
+    <nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a></nav>
     <article>
       <h1 class="text-3xl text-center">{frontmatter.title}</h1>
       <p class="text-center mt-4 text-zinc-700 text-sm">
         {frontmatter.shortDescription}
       </p>
       <p class="text-center mt-2 text-zinc-700 text-sm">
-        Date: {
+        Online HEIC Convert · {
           new Date(frontmatter.date).toLocaleDateString("en-us", {
             year: "numeric",
             month: "short",
@@ -40,5 +59,6 @@ const { frontmatter } = Astro.props;
         <slot />
       </div>
     </article>
+    <nav aria-label="Keep exploring" class="mt-8 border-t pt-5"><a class="underline" href="/how-it-works/">How conversion works and its limits</a> · <a class="underline" href="/blog/">All HEIC guides</a></nav>
   </div>
 </Layout>

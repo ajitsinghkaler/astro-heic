@@ -2,7 +2,7 @@
 import Layout from "../../layout/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-const posts = await getCollection("blog");
+const posts = (await getCollection("blog")).sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
 const description =
   "Heic Converter Blog - Your source for insights on HEIC conversion to various formats in a secure, reliable way that ensures privacy by on-device conversion.";
@@ -27,7 +27,7 @@ const ogTitle =
             <div class="text-red-500 border border-gray-200 rounded-lg shadow w-full max-w-sm">
               <Image src={post.data.coverImage} alt={post.data.coverAlt} loading="eager" />
               <div class="p-4">
-                <h3 class="text-black text-lg font-bold">{post.data.title}</h3>
+                <h2 class="text-black text-lg font-bold">{post.data.title}</h2>
                 <p class="text-sm text-gray-500 mt-1 line-clamp-3">
                   {post.data.shortDescription}
                 </p>

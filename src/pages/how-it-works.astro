@@ -1,0 +1,41 @@
+---
+import Layout from '../layout/Layout.astro';
+const title = 'How Online HEIC Convert works: browser processing and limits';
+const description = 'See how selected HEIC photos are converted in your browser, what downloads contain, and the limits for file size, metadata, and PDFs.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage', name: title, description,
+  url: new URL('/how-it-works/', Astro.site).toString(),
+};
+---
+<Layout title={title} description={description} ogImage="/og-image/blog.png" ogTitle={title} schema={schema}>
+  <article class="prose mx-auto max-w-prose px-4 py-10">
+    <nav aria-label="Breadcrumb"><a href="/">Home</a> / How it works</nav>
+    <h1>How HEIC conversion works here</h1>
+    <p>Select a HEIC photo, let your browser convert it, and save the result. The conversion runs on your device; selected photo bytes are not uploaded to a conversion server.</p>
+    <h2>What the browser does</h2>
+    <ol>
+      <li>The page loads the converter’s code and assets over the network.</li>
+      <li>You choose one or more <code>.heic</code> files. The converter reads those selected files inside the browser.</li>
+      <li>The decoder creates JPG, PNG, or WebP output. The image tools offer individual downloads or a ZIP containing the converted images.</li>
+      <li>The PDF tool converts image content and places it onto PDF pages, then provides one PDF download.</li>
+    </ol>
+    <p>The conversion code does not send your photo to an upload API. Loading a website still involves network requests for its pages, scripts, fonts, and other resources. Browser processing describes the photo-conversion step; it is not a claim that visiting the website is offline or anonymous. See the <a href="/privacy/">privacy policy</a>.</p>
+    <h2>What the tools do not promise</h2>
+    <ul>
+      <li>No fixed completion time or unlimited batch size: large photos and batches use your device’s memory and processing time. Try one file first on a constrained device.</li>
+      <li>No target-file-size, crop, or resize controls. Check the output against your upload form’s actual limits.</li>
+      <li>No metadata-preservation guarantee. Keep the original if dates, location metadata, HDR information, or other source details matter.</li>
+      <li>No OCR or editable text in the PDF output. Review the resulting pages, especially their order and orientation, before using them.</li>
+      <li>No guarantee that every HEIC variant will decode successfully. A failed conversion does not by itself prove the original is damaged.</li>
+    </ul>
+    <h2>If conversion does not finish</h2>
+    <p>Keep the original file and try a single photo in a current browser. Check whether the original opens in another application. If it opens in Preview on a Mac, <a href="https://support.apple.com/en-us/116944">Apple documents exporting it to another format</a>. This site does not require a sign-up or payment to try the conversion.</p>
+    <h2>Choose the next step</h2>
+    <ul>
+      <li><a href="/heic-to-jpg/">Convert a photo to JPG</a></li>
+      <li><a href="/blog/heic-jpg-png-pdf-which-format/">Choose between JPG, PNG, WebP, and PDF</a></li>
+      <li><a href="/blog/heic-photo-upload-not-supported/">Troubleshoot a rejected photo upload</a></li>
+    </ul>
+  </article>
+</Layout>
