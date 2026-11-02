@@ -1,165 +1,131 @@
 import { Component, inject, signal } from "@angular/core";
-import { NgOptimizedImage } from "@angular/common";
-import { PdfService } from "../services/pdf.service";
+import { PdfService, type PdfPageSize } from "../services/pdf.service";
+import { formatBytes, outputFilename } from "../services/conversion-options";
 
 @Component({
   standalone: true,
   template: `
-    <div
-      class="relative rounded-lg overflow-hidden bg-zinc-50 p-4 border border-zinc-300"
-      [class.hover:bg-zinc-100]="!selectedFiles().length"
-    >
-      <div class="relative w-full min-h-60 flex flex-col justify-between">
-        @if(!selectedFiles().length){
-        <div class="flex justify-center absolute top-0 left-0 w-full h-full">
-          <div class="flex flex-col items-center justify-center h-full">
-            <div class="text-red-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="40"
-                zoomAndPan="magnify"
-                viewBox="0 0 30 44.999999"
-                height="60"
-                preserveAspectRatio="xMidYMid meet"
-                version="1.0"
-              >
-                <g clip-path="url(#b1635a3719)">
-                  <path
-                    fill="currentColor"
-                    d="M 28.050781 12.816406 L 19.464844 4.246094 C 18.933594 3.722656 18.140625 3.390625 17.347656 3.390625 L 4.132812 3.390625 C 2.484375 3.390625 1.160156 4.710938 1.160156 6.355469 L 1.160156 38.644531 C 1.160156 40.292969 2.484375 41.609375 4.132812 41.609375 L 25.9375 41.609375 C 27.589844 41.609375 28.910156 40.292969 28.910156 38.644531 L 28.910156 14.855469 C 28.910156 14.066406 28.582031 13.339844 28.050781 12.816406 Z M 20.453125 13.011719 C 19.792969 13.011719 19.265625 12.484375 19.265625 11.824219 L 19.265625 5.761719 L 26.53125 13.011719 Z M 20.453125 13.011719 "
-                    fill-opacity="1"
-                    fill-rule="nonzero"
-                  ></path>
-                </g>
-                <g fill="#ffffff" fill-opacity="1">
-                  <g transform="translate(5.028566, 27.290389)">
-                    <g>
-                      <path
-                        d="M 3.6875 -7.140625 C 4.195312 -7.140625 4.632812 -7.046875 5 -6.859375 C 5.363281 -6.671875 5.632812 -6.40625 5.8125 -6.0625 C 6 -5.726562 6.09375 -5.335938 6.09375 -4.890625 C 6.09375 -4.453125 6 -4.0625 5.8125 -3.71875 C 5.632812 -3.382812 5.363281 -3.125 5 -2.9375 C 4.632812 -2.75 4.195312 -2.65625 3.6875 -2.65625 L 2.34375 -2.65625 L 2.34375 0 L 0.921875 0 L 0.921875 -7.140625 Z M 3.5 -3.78125 C 4.28125 -3.78125 4.671875 -4.148438 4.671875 -4.890625 C 4.671875 -5.640625 4.28125 -6.015625 3.5 -6.015625 L 2.34375 -6.015625 L 2.34375 -3.78125 Z M 3.5 -3.78125 "
-                      ></path>
-                    </g>
-                  </g>
-                </g>
-                <g fill="#ffffff" fill-opacity="1">
-                  <g transform="translate(11.549455, 27.290389)">
-                    <g>
-                      <path
-                        d="M 3.5 -7.140625 C 4.65625 -7.140625 5.535156 -6.835938 6.140625 -6.234375 C 6.753906 -5.640625 7.0625 -4.75 7.0625 -3.5625 C 7.0625 -2.382812 6.753906 -1.492188 6.140625 -0.890625 C 5.535156 -0.296875 4.65625 0 3.5 0 L 0.921875 0 L 0.921875 -7.140625 Z M 3.40625 -1.1875 C 4.144531 -1.1875 4.695312 -1.375 5.0625 -1.75 C 5.425781 -2.125 5.609375 -2.726562 5.609375 -3.5625 C 5.609375 -4.40625 5.425781 -5.015625 5.0625 -5.390625 C 4.695312 -5.765625 4.144531 -5.953125 3.40625 -5.953125 L 2.34375 -5.953125 L 2.34375 -1.1875 Z M 3.40625 -1.1875 "
-                      ></path>
-                    </g>
-                  </g>
-                </g>
-                <g fill="#ffffff" fill-opacity="1">
-                  <g transform="translate(19.178315, 27.290389)">
-                    <g>
-                      <path
-                        d="M 5.453125 -7.140625 L 5.453125 -5.953125 L 2.34375 -5.953125 L 2.34375 -4.0625 L 5.171875 -4.0625 L 5.171875 -2.90625 L 2.34375 -2.90625 L 2.34375 0 L 0.921875 0 L 0.921875 -7.140625 Z M 5.453125 -7.140625 "
-                      ></path>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <button
-              (click)="fileInput.click()"
-              class="bg-red-500 hover:bg-red-600 text-white px-8 py-2 rounded text-lg font-bold my-3"
-            >
-              Choose files
-            </button>
-            <input
-              #fileInput
-              type="file"
-              aria-label="Choose HEIC files"
-              class="absolute w-full h-full z-10 opacity-0 cursor-pointer top-0"
-              accept=".heic"
-              (change)="onFilesChange($event)"
-              multiple
-            />
-            <p class="text-sm text-center font-semibold text-red-500">
-              Select one or more HEIC photos
-            </p>
-            <p class="text-sm text-gray-500 mt-2"></p>
-          </div>
+    <section class="rounded-xl border border-zinc-300 bg-zinc-50 p-5 sm:p-7" aria-label="PDF converter" [attr.aria-busy]="loading()">
+      @if (!pdfBlobUrl()) {
+        <fieldset [disabled]="loading()">
+          <legend class="font-semibold text-lg mb-4">Prepare your PDF</legend>
+          <label for="pdf-files" class="block font-medium mb-3">Choose HEIC photos</label>
+          <input id="pdf-files" type="file" accept=".heic" multiple (change)="onFilesChange($event)" class="block w-full text-sm file:mr-3 file:rounded file:border-0 file:bg-blue-700 file:px-4 file:py-2 file:text-white" />
+          <p class="text-sm text-zinc-600 mt-3">Each photo becomes one page. Review the order before creating the PDF.</p>
+          <label for="pdf-page-size" class="block font-medium mt-6 mb-2">PDF page size</label>
+          <select id="pdf-page-size" class="w-full sm:w-auto border border-zinc-400 bg-white rounded px-3 py-2" [value]="pageSize()" (change)="setPageSize($any($event.target).value)">
+            <option value="photo">Photo proportions</option>
+            <option value="a4">A4 portrait</option>
+            <option value="letter">US Letter portrait</option>
+          </select>
+          <p class="text-sm text-zinc-600 mt-2">A4 and Letter fit each photo inside the page with a 24-point margin. Photos keep their proportions.</p>
+          @if (selectedFiles().length) {
+            <h2 class="font-semibold mt-6 mb-2">Page order</h2>
+            <ol class="divide-y divide-zinc-200">
+              @for (file of selectedFiles(); track file; let index = $index) {
+                <li class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 py-3 text-sm">
+                  <span class="break-all">{{ index + 1 }}. {{ file.name }} <span class="text-zinc-600">({{ bytes(file.size) }})</span></span>
+                  <span class="flex gap-3 shrink-0">
+                    <button type="button" class="underline text-blue-800 px-2 py-2 disabled:text-zinc-400" [disabled]="index === 0" [attr.aria-label]="'Move ' + file.name + ' up'" (click)="movePage(index, -1)">Up</button>
+                    <button type="button" class="underline text-blue-800 px-2 py-2 disabled:text-zinc-400" [disabled]="index === selectedFiles().length - 1" [attr.aria-label]="'Move ' + file.name + ' down'" (click)="movePage(index, 1)">Down</button>
+                    <button type="button" class="underline text-blue-800 px-2 py-2" [attr.aria-label]="'Remove ' + file.name" (click)="removePage(index)">Remove</button>
+                  </span>
+                </li>
+              }
+            </ol>
+          }
+          <button type="button" class="mt-5 bg-blue-700 hover:bg-blue-800 disabled:bg-zinc-400 text-white font-semibold px-6 py-3 rounded-lg" [disabled]="!selectedFiles().length" (click)="convertHeicToPdf()">Create PDF</button>
+        </fieldset>
+      }
+      <p role="status" aria-live="polite" class="mt-4 text-zinc-700">{{ status() }}</p>
+      @if (error()) { <p role="alert" class="mt-4 border border-red-300 bg-red-50 text-red-800 rounded p-3">{{ error() }}</p> }
+      @if (pdfBlobUrl()) {
+        <div class="flex flex-wrap gap-3 mt-4">
+          <a [href]="pdfBlobUrl()" [download]="downloadName()" class="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-5 py-3 rounded-lg">Download PDF</a>
+          <button type="button" class="border border-zinc-400 bg-white px-5 py-3 rounded-lg" (click)="editPages()">Edit page order</button>
+          <button type="button" class="border border-zinc-400 bg-white px-5 py-3 rounded-lg" (click)="cancel()">Convert More</button>
         </div>
-        } @if(loading()){
-        <div
-          class="flex justify-center items-center absolute top-0 left-0 w-full h-full flex-col"
-        >
-        <div
-            class="w-10 h-10 border-4 border-red-400 border-t-red-500 rounded-full animate-spin"
-          ></div>
-          <p class="mt-6 text-zinc-700 font-semibold">Converting...</p>
-        </div>
-        } @if(pdfBlobUrl()){
-        <div
-          class="flex justify-center items-center absolute top-0 left-0 w-full h-full"
-        >
-          <a
-            [href]="pdfBlobUrl()"
-            download="output.pdf"
-            class="text-red-500 hover:text-red-600 px-4 py-2 rounded z-20 font-semibold text-lg"
-          >
-            Download
-          </a>
-          <button
-            class="text-red-500 hover:text-red-600 px-4 py-2 rounded z-20 font-semibold text-lg"
-            (click)="cancel()"
-          >
-            Convert More
-          </button>
-        </div>
-        }
-      </div>
-    </div>
-    @if(error()){
-    <div class="text-red-600 bg-red-100 border border-red-600 rounded-lg mt-6">
-      <p class="text-sm font-semibold text-center p-2">{{ error() }}</p>
-    </div>
-    }
+        <p class="text-sm text-zinc-600 mt-5">Open the PDF to check every page before sharing it. This is an image-only PDF without OCR or selectable text.</p>
+      }
+    </section>
   `,
-
-  imports: [NgOptimizedImage],
 })
 export class PdfComponent {
   static renderProviders = [PdfService];
-
   pdfService = inject(PdfService);
+  private destroyed = false;
   selectedFiles = signal<File[]>([]);
+  pageSize = signal<PdfPageSize>("photo");
   loading = signal(false);
-  pdfBlobUrl = signal<string>("");
+  pdfBlobUrl = signal("");
   error = signal("");
+  status = signal("");
+  bytes = formatBytes;
 
+  onFilesChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const files = Array.from(input.files ?? []);
+    input.value = "";
+    if (!files.length) return;
+    this.error.set("");
+    const invalid = files.find(file => !/\.heic$/i.test(file.name) || !file.size);
+    if (invalid) {
+      this.selectedFiles.set([]);
+      this.status.set("");
+      this.error.set(`Choose complete .heic photos. “${invalid.name}” is empty or has a different extension.`);
+      return;
+    }
+    this.selectedFiles.set(files);
+    this.status.set(`${files.length} photo(s) ready. Review the page order, then choose Create PDF.`);
+  }
 
-  onFilesChange(event: any) {
-    this.selectedFiles.set(Array.from(event.target.files));
-    this.convertHeicToPdf();
+  setPageSize(value: string) { if (value === "photo" || value === "a4" || value === "letter") this.pageSize.set(value); }
+
+  movePage(index: number, direction: number) {
+    const next = index + direction;
+    if (next < 0 || next >= this.selectedFiles().length) return;
+    this.selectedFiles.update(files => { const reordered = [...files]; [reordered[index], reordered[next]] = [reordered[next], reordered[index]]; return reordered; });
+    this.status.set("Page order updated.");
+  }
+
+  removePage(index: number) {
+    this.selectedFiles.update(files => files.filter((_, i) => i !== index));
+    this.error.set("");
+    this.status.set(this.selectedFiles().length ? `${this.selectedFiles().length} photo(s) ready. Review the order and choose Create PDF.` : "Choose one or more HEIC photos.");
+  }
+
+  downloadName() { return this.selectedFiles().length === 1 ? outputFilename(this.selectedFiles()[0].name, "pdf", new Set()) : "heic-photos.pdf"; }
+
+  editPages() {
+    if (this.pdfBlobUrl()) URL.revokeObjectURL(this.pdfBlobUrl());
+    this.pdfBlobUrl.set("");
+    this.status.set("Review your photos and create a new PDF when ready.");
   }
 
   cancel() {
+    this.editPages();
     this.selectedFiles.set([]);
-    this.pdfBlobUrl.set("");
-    this.loading.set(false);
+    this.status.set("");
+    this.error.set("");
   }
 
-  ngOnDestroy() {
-    this.cancel();
-  }
+  ngOnDestroy() { this.destroyed = true; this.cancel(); }
 
   async convertHeicToPdf() {
+    if (this.loading() || !this.selectedFiles().length) return;
     this.loading.set(true);
     this.error.set("");
+    this.status.set(`Preparing 0 of ${this.selectedFiles().length} pages…`);
     try {
-      const result = (await this.pdfService.convertToPdf(
-        this.selectedFiles(),
-      )) as string;
-      this.pdfBlobUrl.set(result);
-      this.loading.set(false);
-    } catch (error) {
-      this.cancel();
-      this.error.set(
-        "An error occured while converting. Please try again or report on the contact us form."
-      );
-    }
+      const url = await this.pdfService.convertToPdf(this.selectedFiles(), {
+        pageSize: this.pageSize(),
+        onProgress: (completed, total) => { if (!this.destroyed) this.status.set(`Prepared ${completed} of ${total} pages…`); },
+      });
+      if (this.destroyed) URL.revokeObjectURL(url);
+      else { this.pdfBlobUrl.set(url); this.status.set(`${this.selectedFiles().length} page(s) ready to download.`); }
+    } catch {
+      this.status.set("");
+      this.error.set("The PDF could not be created. Try a single complete HEIC photo or a smaller batch.");
+    } finally { this.loading.set(false); }
   }
 }

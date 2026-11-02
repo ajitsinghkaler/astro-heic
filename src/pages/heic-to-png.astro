@@ -1,8 +1,8 @@
 ---
 import { PngComponent } from "../components/png.component";
 import Layout from "../layout/Layout.astro";
-const title = 'Convert HEIC to PNG Online — Separate Files or Batch ZIP';
-const description = 'Convert HEIC photos to separate PNG images in your browser. Download each result or a batch ZIP, with local photo processing and no account.';
+const title = 'Convert HEIC to PNG Online — Resize and Batch Download';
+const description = 'Convert HEIC to PNG locally. Keep original dimensions or reduce the longest edge, then save individual images or a batch ZIP without an account.';
 const ogImage = "/og-image/heic-to-png.png";
 ---
 
@@ -14,9 +14,9 @@ const ogImage = "/og-image/heic-to-png.png";
     <section class="mt-12 mb-10 prose max-w-none" aria-labelledby="conversion-steps">
       <h2 id="conversion-steps">How to convert HEIC to PNG</h2>
       <ol>
-        <li>Choose <strong>Choose files</strong> and select the HEIC photos on your device.</li>
-        <li>Wait for conversion to finish. It starts automatically after selection.</li>
-        <li>Select a finished preview to save that image, or choose Download All for a ZIP of the separate results.</li>
+        <li>Use <strong>Choose HEIC photos</strong> to select files from your device.</li>
+        <li>Choose your output settings, then select Convert to PNG.</li>
+        <li>Use a named download link to save an image, or choose Download All as ZIP for an archive of the separate results. The cards show dimensions and file sizes.</li>
         <li>Check the downloaded result before sharing it. Choose <strong>Convert More</strong> to start another batch.</li>
       </ol>
       <p>Selected photo bytes are processed locally in your browser rather than uploaded to a conversion server. The website still loads its scripts and other web resources. No account or conversion fee is required.</p>
@@ -24,7 +24,7 @@ const ogImage = "/og-image/heic-to-png.png";
     </section>
     <section class="prose max-w-none mb-10" aria-labelledby="conversion-limits">
       <h2 id="conversion-limits">What to check before using the result</h2>
-      <p>PNG stores decoded image pixels with lossless compression, but conversion does not preserve every HEIC feature, HDR rendering or metadata field. It does not remove backgrounds or create transparency in an opaque photo. PNG photos can be larger than their HEIC originals.</p>
+      <p>PNG stores decoded image pixels with lossless compression, but conversion does not preserve every HEIC feature, HDR rendering or metadata field. It does not remove backgrounds or create transparency in an opaque photo. PNG photos can be larger than their HEIC originals. You can reduce the longest edge while preserving proportions; smaller photos are never enlarged.</p>
       <p>Large photos or batches can need substantial memory. If conversion fails, try a single complete HEIC file, then a smaller batch. Support can vary with the HEIC variant, browser and available device memory.</p>
     </section>
     <section class="prose max-w-none mb-16" aria-labelledby="format-choice">

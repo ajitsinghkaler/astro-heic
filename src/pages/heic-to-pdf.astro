@@ -1,8 +1,8 @@
 ---
 import { PdfComponent } from "../components/pdf.component";
 import Layout from "../layout/Layout.astro";
-const title = 'Convert HEIC to PDF Online — One Photo per Page';
-const description = 'Turn HEIC photos into one PDF with a page per selected file. Convert locally, download the document and check page order, readability and file size.';
+const title = 'Convert HEIC to PDF Online — Reorder Photos, A4 and Letter';
+const description = 'Convert HEIC to PDF locally. Reorder photos, choose A4, Letter or photo-proportion pages, then download one image-only PDF without an account.';
 const ogImage = "/og-image/heic-to-pdf.png";
 ---
 
@@ -14,9 +14,9 @@ const ogImage = "/og-image/heic-to-pdf.png";
     <section class="mt-12 mb-10 prose max-w-none" aria-labelledby="conversion-steps">
       <h2 id="conversion-steps">How to convert HEIC to PDF</h2>
       <ol>
-        <li>Choose <strong>Choose files</strong> and select the HEIC photos on your device.</li>
-        <li>Wait for conversion to finish. It starts automatically after selection.</li>
-        <li>When the Download link appears, save output.pdf and open it in a PDF viewer.</li>
+        <li>Use <strong>Choose HEIC photos</strong> to select files from your device.</li>
+        <li>Review the page order and paper size, then choose Create PDF.</li>
+        <li>When Download PDF appears, save the result and open it in a PDF viewer.</li>
         <li>Check the downloaded result before sharing it. Choose <strong>Convert More</strong> to start another batch.</li>
       </ol>
       <p>Selected photo bytes are processed locally in your browser rather than uploaded to a conversion server. The website still loads its scripts and other web resources. No account or conversion fee is required.</p>
@@ -24,12 +24,12 @@ const ogImage = "/og-image/heic-to-pdf.png";
     </section>
     <section class="prose max-w-none mb-10" aria-labelledby="conversion-limits">
       <h2 id="conversion-limits">What to check before using the result</h2>
-      <p>This is an image-only PDF, made with a fixed JPEG quality setting. It does not perform OCR or create selectable text. Pages follow image proportions rather than a fixed A4 or Letter size. There are no margin, crop, paper-size or target-file-size controls.</p>
+      <p>This is an image-only PDF, made with a fixed JPEG quality setting. It does not perform OCR or create selectable text. Choose photo proportions, A4 portrait or US Letter portrait pages. Paper-size options center each photo with a fixed margin and preserve its shape. There are no custom margin, crop or exact target-file-size controls.</p>
       <p>Large photos or batches can need substantial memory. If conversion fails, try a single complete HEIC file, then a smaller batch. Support can vary with the HEIC variant, browser and available device memory.</p>
     </section>
     <section class="prose max-w-none mb-16" aria-labelledby="format-choice">
       <h2 id="format-choice">When to choose PDF</h2>
-      <p>Check every page in a PDF viewer before uploading it. The tool follows the file list supplied by the browser; there is no page-reordering control. Confirm the recipient's page and size requirements. Keep your HEIC originals.</p>
+      <p>Check every page in a PDF viewer before uploading it. Arrange the selected photos with Up, Down and Remove before choosing Create PDF. Use Edit page order after conversion to arrange them again. Confirm the recipient's page and size requirements. Keep your HEIC originals.</p>
       <p>Compare <a href="/blog/heic-jpg-png-pdf-which-format/">JPG, PNG, WebP and PDF</a>, or use the <a href="/blog/heic-photo-upload-not-supported/">photo upload checklist</a> if a form still rejects your file.</p>
     </section>
   </div>

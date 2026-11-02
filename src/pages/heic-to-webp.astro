@@ -1,8 +1,8 @@
 ---
 import { WebpComponent } from "../components/webp.component";
 import Layout from "../layout/Layout.astro";
-const title = 'Convert HEIC to WebP Online — Photos for Your Website';
-const description = 'Convert HEIC photos to WebP locally in your browser. Download individual images or a ZIP, then compare quality and file size before publishing.';
+const title = 'Convert HEIC to WebP Online — Quality and Resize Controls';
+const description = 'Convert HEIC to WebP locally. Adjust quality, resize the longest edge and compare output dimensions and file sizes before publishing your photos.';
 const ogImage = "/og-image/heic-to-webp.png";
 ---
 
@@ -14,9 +14,9 @@ const ogImage = "/og-image/heic-to-webp.png";
     <section class="mt-12 mb-10 prose max-w-none" aria-labelledby="conversion-steps">
       <h2 id="conversion-steps">How to convert HEIC to WebP</h2>
       <ol>
-        <li>Choose <strong>Choose files</strong> and select the HEIC photos on your device.</li>
-        <li>Wait for conversion to finish. It starts automatically after selection.</li>
-        <li>Select a finished preview to save that image, or choose Download All for a ZIP of the separate results.</li>
+        <li>Use <strong>Choose HEIC photos</strong> to select files from your device.</li>
+        <li>Choose your output settings, then select Convert to WebP.</li>
+        <li>Use a named download link to save an image, or choose Download All as ZIP for an archive of the separate results. The cards show dimensions and file sizes.</li>
         <li>Check the downloaded result before sharing it. Choose <strong>Convert More</strong> to start another batch.</li>
       </ol>
       <p>Selected photo bytes are processed locally in your browser rather than uploaded to a conversion server. The website still loads its scripts and other web resources. No account or conversion fee is required.</p>
@@ -24,7 +24,7 @@ const ogImage = "/og-image/heic-to-webp.png";
     </section>
     <section class="prose max-w-none mb-10" aria-labelledby="conversion-limits">
       <h2 id="conversion-limits">What to check before using the result</h2>
-      <p>This tool uses a fixed lossy WebP quality setting of 0.8. It has no lossless-mode switch, quality slider or resizing controls. WebP output is not guaranteed to be smaller than your HEIC or an existing website image.</p>
+      <p>Choose a lossy WebP quality setting from 10 to 100 (default 80), with optional longest-edge resizing. Smaller photos are not enlarged. There is no lossless-mode switch or exact target-file-size control. WebP output is not guaranteed to be smaller than your HEIC or an existing website image.</p>
       <p>Large photos or batches can need substantial memory. If conversion fails, try a single complete HEIC file, then a smaller batch. Support can vary with the HEIC variant, browser and available device memory.</p>
     </section>
     <section class="prose max-w-none mb-16" aria-labelledby="format-choice">

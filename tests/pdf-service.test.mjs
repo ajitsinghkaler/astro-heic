@@ -17,6 +17,7 @@ function setup() {
   const decodes = [];
   let result;
   class Pdf {
+    constructor(options) { assert.equal(options.unit, 'pt'); }
     pages = [{ blank: true }];
     deletePage(number) { this.pages.splice(number - 1, 1); }
     addPage(size, orientation) { this.pages.push({ size, orientation }); }
@@ -66,6 +67,33 @@ test('keeps selection order when the first photo decodes more slowly', async () 
   assert.equal(await t.service.convertToPdf(files), 'blob:test/pdf');
   assert.deepEqual(Array.from(t.result().pages, page => page.data), ['first', 'second', 'third']);
   assert.equal(t.result().pages.length, 3);
+});
+
+test('fits a landscape photo on A4 portrait without stretching or clipping', async () => {
+  const t = setup();
+  await t.service.convertToPdf([t.photo('landscape', 320, 180)], { pageSize: 'a4' });
+  const page = t.result().pages[0];
+  assert.deepEqual(Array.from(page.size), [595.28, 841.89]);
+  assert.equal(page.orientation, 'portrait');
+  assert(Math.abs(page.width / page.height - 320 / 180) < 0.0001);
+  assert(page.x >= 24 && page.y >= 24);
+  assert(page.x + page.width <= 595.28 - 24 + 0.0001);
+  assert(page.y + page.height <= 841.89 - 24 + 0.0001);
+});
+
+test('creates US Letter pages and reports completed pages in order', async () => {
+  const t = setup(), progress = [];
+  await t.service.convertToPdf([t.photo('first', 180, 320), t.photo('second', 320, 180)], {
+    pageSize: 'letter', onProgress: (completed, total) => progress.push([completed, total]),
+  });
+  assert.deepEqual(Array.from(t.result().pages[0].size), [612, 792]);
+  assert.deepEqual(Array.from(t.result().pages, page => page.data), ['first', 'second']);
+  assert.deepEqual(progress, [[1, 2], [2, 2]]);
+});
+
+test('rejects an unknown paper size', async () => {
+  const t = setup();
+  await assert.rejects(t.service.convertToPdf([t.photo('photo', 20, 20)], { pageSize: 'invalid' }), /page size/);
 });
 
 test('creates a single correctly sized page without a blank leading page', async () => {

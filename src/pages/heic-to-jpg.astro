@@ -1,8 +1,8 @@
 ---
 import { JpgComponent } from "../components/jpg.component";
 import Layout from "../layout/Layout.astro";
-const title = 'Convert HEIC to JPG Online — Individual Photos or Batch ZIP';
-const description = 'Convert HEIC photos to JPG in your browser. Save individual JPEG images or a batch ZIP, with local photo processing and no account.';
+const title = 'Convert HEIC to JPG Online — Quality and Resize Controls';
+const description = 'Convert HEIC to JPG locally. Adjust quality and image size, keep photo basenames, then download individual JPEGs or a batch ZIP without an account.';
 const ogImage = "/og-image/heic-to-jpg.png";
 ---
 
@@ -14,9 +14,9 @@ const ogImage = "/og-image/heic-to-jpg.png";
     <section class="mt-12 mb-10 prose max-w-none" aria-labelledby="conversion-steps">
       <h2 id="conversion-steps">How to convert HEIC to JPG</h2>
       <ol>
-        <li>Choose <strong>Choose files</strong> and select the HEIC photos on your device.</li>
-        <li>Wait for conversion to finish. It starts automatically after selection.</li>
-        <li>Select a finished preview to save that image, or choose Download All for a ZIP of the separate results.</li>
+        <li>Use <strong>Choose HEIC photos</strong> to select files from your device.</li>
+        <li>Choose your output settings, then select Convert to JPG.</li>
+        <li>Use a named download link to save an image, or choose Download All as ZIP for an archive of the separate results. The cards show dimensions and file sizes.</li>
         <li>Check the downloaded result before sharing it. Choose <strong>Convert More</strong> to start another batch.</li>
       </ol>
       <p>Selected photo bytes are processed locally in your browser rather than uploaded to a conversion server. The website still loads its scripts and other web resources. No account or conversion fee is required.</p>
@@ -24,7 +24,7 @@ const ogImage = "/og-image/heic-to-jpg.png";
     </section>
     <section class="prose max-w-none mb-10" aria-labelledby="conversion-limits">
       <h2 id="conversion-limits">What to check before using the result</h2>
-      <p>JPEG uses lossy compression. This converter uses a fixed quality setting and has no quality slider, resize or target-file-size controls. The result is a sharing copy rather than a complete archive of the HEIC and its metadata.</p>
+      <p>JPEG uses lossy compression. Choose a quality setting from 10 to 100 (default 92) and optionally reduce the longest edge. Smaller photos are not enlarged. There is no exact target-file-size or crop control. The result is a sharing copy rather than a complete archive of the HEIC and its metadata.</p>
       <p>Large photos or batches can need substantial memory. If conversion fails, try a single complete HEIC file, then a smaller batch. Support can vary with the HEIC variant, browser and available device memory.</p>
     </section>
     <section class="prose max-w-none mb-16" aria-labelledby="format-choice">

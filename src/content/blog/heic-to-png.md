@@ -15,15 +15,16 @@ This guide covers the browser workflow, a Mac option and two tested command-line
 
 ## Convert HEIC to PNG in your browser
 
-1. Open the [PNG converter](/heic-to-png/) and choose **Choose files**.
-2. Select one or more `.heic` files from your device. Conversion starts after selection; there is no separate Convert button.
-3. Wait for the image previews. Select a preview to download its PNG, named `image_1.png`, `image_2.png` and so on.
-4. Use **Download All** for a ZIP containing the separate PNGs. Extract the ZIP before uploading an individual image elsewhere.
-5. Open a downloaded PNG and check its orientation, dimensions and appearance before using it.
+1. Open the [PNG converter](/heic-to-png/) and choose **Choose HEIC photos**.
+2. Leave **Longest edge** at **Original size**, or choose a smaller maximum dimension. Select one or more `.heic` files from your device.
+3. Review the selected filenames, remove any unwanted photos and choose **Convert to PNG**.
+4. Wait for the image previews. Download each PNG using its named link. The output keeps the source basename: `holiday.heic` becomes `holiday.png`. Duplicate names receive a numbered suffix.
+5. Use **Download All as ZIP** for an archive containing the separate PNGs. Extract the ZIP before uploading an individual image elsewhere.
+6. Check the reported output dimensions and file size, then open a downloaded PNG to inspect its orientation and appearance.
 
 The image conversion runs locally in the browser; selected photo bytes are not uploaded to a conversion server. The website still loads its scripts and other web resources. See [how conversion works](/how-it-works/) for the scope of this privacy claim and the current limitations.
 
-A batch does not stitch photos into one picture. There are no resize, background-removal or metadata-preservation controls. If a large batch fails on a phone, try one photo first, then a smaller batch.
+A batch does not stitch photos into one picture. The longest-edge setting reduces dimensions while keeping the aspect ratio and never enlarges a smaller photo. There are no background-removal or metadata-preservation controls. If a large batch fails on a phone, try one photo first, then a smaller batch.
 
 ## Convert HEIC to PNG on a Mac
 

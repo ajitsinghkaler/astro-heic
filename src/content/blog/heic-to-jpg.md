@@ -15,13 +15,14 @@ Use this workflow for existing photos. Changing an iPhone camera setting affects
 
 ## Convert HEIC to JPG in the browser
 
-1. Open the [JPG converter](/heic-to-jpg/) and choose **Choose files**.
-2. Select one or more `.heic` files. Conversion starts as soon as the selection is returned to the page.
-3. Wait for the previews, then select a preview to download its JPG.
-4. Use **Download All** to download a ZIP of separate JPG files. Extract it before attaching a photo to a form.
-5. Open the JPG and check its appearance, orientation and file size before sharing it.
+1. Open the [JPG converter](/heic-to-jpg/) and choose **Choose HEIC photos**.
+2. Choose a **Quality setting** and leave **Longest edge** at **Original size**, or choose a smaller maximum dimension.
+3. Select one or more `.heic` files, review the filenames and choose **Convert to JPG**.
+4. Wait for the previews, then use a named download link to save its JPG.
+5. Use **Download All as ZIP** to download an archive of separate JPG files. Extract it before attaching a photo to a form.
+6. Check the reported dimensions and file size. Open the JPG to inspect its appearance and orientation before sharing it.
 
-Outputs are named `image_1.jpg`, `image_2.jpg` and so on. The converter does not join several photos into a single image, preserve their original filenames or resize them. Large batches can exhaust a phone's available memory; try fewer photos if conversion fails.
+Outputs keep the source basename: `holiday.heic` becomes `holiday.jpg`. Duplicate basenames receive numbered suffixes so a batch ZIP does not overwrite one photo with another. The longest-edge setting preserves proportions and does not enlarge smaller photos. The converter does not join several photos into one image. Large batches can exhaust a phone's available memory; try fewer photos if conversion fails.
 
 The selected photo bytes are converted locally in the browser, not uploaded to a conversion server. This describes the conversion step; the site still loads scripts and other web resources. See [how it works](/how-it-works/) for details.
 
@@ -29,7 +30,7 @@ The selected photo bytes are converted locally in the browser, not uploaded to a
 
 Open the HEIC in Preview, choose **File → Export**, set the format to **JPEG**, choose the quality and save a separate copy. Apple documents [image-format export in Preview](https://support.apple.com/guide/preview/convert-image-file-types-prvw1012/mac). If the file opens in another app, use Finder's **Open With → Preview** first.
 
-The browser converter has a fixed JPEG quality setting of 0.92 and no quality slider. Preview is an alternative when you want to choose the export quality yourself. These numeric controls are encoder settings, not percentages of retained detail.
+The browser converter defaults to a quality setting of 92 and lets you choose a value from 10 to 100 before conversion. A lower setting usually reduces bytes at the cost of detail; compare a sample rather than treating the number as a percentage of retained quality. Preview offers a built-in alternative on a Mac.
 
 ## Will AirDrop automatically make a JPG?
 

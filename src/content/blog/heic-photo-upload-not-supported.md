@@ -1,6 +1,7 @@
 ---
 title: 'HEIC photo not accepted by a website? Check format, size, and the saved file'
 date: '2026-11-01'
+updatedDate: '2026-11-02'
 shortDescription: 'A troubleshooting checklist for an iPhone photo rejected by an upload form, including real conversion, file-size limits, and checking the downloaded copy.'
 coverImage: '../../assets/blog/HEIC.png'
 coverAlt: 'Illustration of the HEIC image format'
@@ -20,13 +21,13 @@ For a photo field that accepts JPEG, the [HEIC to JPG converter](/heic-to-jpg/) 
 
 Changing `photo.heic` to `photo.jpg` only changes its name. It does not decode the image and create a JPEG file. The receiving website may still recognize the original format and reject it.
 
-Open the relevant converter, choose the original `.heic` file, and wait for conversion to finish. Download the result. The JPG tool can process multiple selected files, but if you choose Download All it gives you a ZIP archive. Extract that archive and select an individual image for a form that asks for a photo; do not submit the ZIP itself.
+Open the relevant converter and choose the original `.heic` file. For JPG, PNG or WebP, review the output settings and choose the Convert button. For PDF, review page order and page size, then choose Create PDF. Download the result after conversion. The JPG tool can process multiple selected files, but if you choose Download All as ZIP it gives you an archive. Extract that archive and select an individual image for a form that asks for a photo; do not submit the ZIP itself.
 
 ## 3. Open the downloaded copy
 
 Find the result in your Downloads folder or your browser’s download list. Open it and check that it is the correct photo, is readable, and has the orientation you expect. Keep the original so you can return to it if you need another output format.
 
-The converter is not a crop, resize, or target-file-size tool. If the form requires a particular pixel size or a smaller file, use an image editor that offers those controls. A different extension alone does not guarantee a smaller result.
+The image tools offer maximum longest-edge resizing, which preserves proportions and never enlarges a smaller photo. JPG and WebP also offer quality settings. These can reduce bytes, but there is no exact target-file-size or crop control. Use an image editor if a form needs exact width and height or a particular crop. Check the displayed output dimensions and bytes rather than assuming a different extension is enough.
 
 ## 4. Select the new file on the form
 

@@ -16,15 +16,15 @@ const schema = {
     <h2>What the browser does</h2>
     <ol>
       <li>The page loads the converter’s code and assets over the network.</li>
-      <li>You choose one or more <code>.heic</code> files. The converter reads those selected files inside the browser.</li>
-      <li>The decoder creates JPG, PNG, or WebP output. The image tools offer individual downloads or a ZIP containing the converted images.</li>
-      <li>The PDF tool converts image content and places it onto PDF pages, then provides one PDF download.</li>
+      <li>You choose one or more <code>.heic</code> files, review the output settings and start conversion. The converter reads those selected files inside the browser.</li>
+      <li>The image tools decode photos, optionally reduce their longest edge and create JPG, PNG or WebP copies. JPG and WebP offer a quality setting. Downloads keep source basenames, with numbered suffixes for duplicates, and show dimensions and bytes. Save individual images or a ZIP of the batch.</li>
+      <li>The PDF tool lets you arrange or remove photos and choose photo proportions, A4 portrait or US Letter portrait pages. It converts image content onto PDF pages, then provides one PDF download.</li>
     </ol>
     <p>The conversion code does not send your photo to an upload API. Loading a website still involves network requests for its pages, scripts, fonts, and other resources. Browser processing describes the photo-conversion step; it is not a claim that visiting the website is offline or anonymous. See the <a href="/privacy/">privacy policy</a>.</p>
     <h2>What the tools do not promise</h2>
     <ul>
       <li>No fixed completion time or unlimited batch size: large photos and batches use your device’s memory and processing time. Try one file first on a constrained device.</li>
-      <li>No target-file-size, crop, or resize controls. Check the output against your upload form’s actual limits.</li>
+      <li>No exact target-file-size, crop, custom-dimension or custom PDF margin controls. Check the output against your upload form’s actual limits.</li>
       <li>No metadata-preservation guarantee. Keep the original if dates, location metadata, HDR information, or other source details matter.</li>
       <li>No OCR or editable text in the PDF output. Review the resulting pages, especially their order and orientation, before using them.</li>
       <li>No guarantee that every HEIC variant will decode successfully. A failed conversion does not by itself prove the original is damaged.</li>

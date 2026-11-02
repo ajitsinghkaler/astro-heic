@@ -16,24 +16,24 @@ Check the recipient's rules first. If the form asks for JPG or PNG, use an [imag
 ## Convert a HEIC photo to PDF
 
 1. Open the [HEIC to PDF tool](/heic-to-pdf/).
-2. Choose **Choose files**, then select the HEIC photo on your device. Conversion starts automatically.
-3. Wait until the **Download** link appears.
-4. Download `output.pdf` and open it in a PDF viewer.
+2. Use **Choose HEIC photos** to select the photo on your device.
+3. Choose **Photo proportions**, **A4 portrait** or **US Letter portrait** under **PDF page size**, then select **Create PDF**.
+4. Wait for **Download PDF**, save the result and open it in a PDF viewer. A single-photo PDF uses the source basename; a batch downloads as `heic-photos.pdf`.
 5. Check that the whole photo is visible, correctly oriented and readable at the size the recipient will use.
 
 The conversion runs on your device. It does not upload the selected photo bytes to a conversion server. It does not submit the finished PDF to anyone: you choose where to save it and whether to upload it to a separate service. See [how it works](/how-it-works/) for more detail.
 
 ## Put several HEIC photos in one PDF
 
-Select the photos together in the file picker. The converter creates one PDF with a separate page for each selected file, following the file list supplied by your browser. That list can differ from the order in which you clicked thumbnails, so inspect the downloaded PDF before submission.
+Select the photos together in the file picker. The **Page order** list shows the sequence that will become the PDF. The browser may supply a different order from the one in which you clicked thumbnails; use **Up** and **Down** beside a filename to arrange the pages, and **Remove** to exclude a photo.
 
-There is currently no thumbnail reordering control. If order matters, arrange the files before selection, check the finished pages and use a PDF editor if you need to rearrange them. Test a small batch first on a device with limited memory.
+Choose the page size, then select **Create PDF**. After conversion, **Edit page order** returns to the selected files so you can rearrange them and create a replacement PDF without choosing the photos again. Check the downloaded pages before submission. Test a small batch first on a device with limited memory.
 
 The PNG, JPG and WebP tools behave differently: their **Download All** button creates a ZIP of individual image files. Use the [PDF tool](/heic-to-pdf/) when you actually need a single multi-page document.
 
 ## What kind of PDF does this make?
 
-The converter decodes each HEIC photo to a JPEG image and places that image on a PDF page. Page dimensions follow the image proportions; they are not forced to A4 or US Letter. The current tool has no paper-size, margin, crop, target-file-size or compression controls.
+The converter decodes each HEIC photo to a JPEG image and places it on a PDF page. **Photo proportions** follows each image shape, using its pixel dimensions at 96 pixels per inch rather than preserving source print-resolution metadata. **A4 portrait** and **US Letter portrait** fit each image within the selected paper size, centered with a fixed 24-point margin and without stretching. There are no custom margin, crop, target-file-size or compression controls.
 
 The JPEG step uses a fixed quality setting, so this is not a lossless archive of your HEIC. Check small text and fine lines carefully, and retain the source photo.
 

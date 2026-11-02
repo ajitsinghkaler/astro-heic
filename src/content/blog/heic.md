@@ -38,9 +38,9 @@ The [format comparison guide](/blog/heic-jpg-png-pdf-which-format/) explains the
 
 ## How does this site's converter handle a photo?
 
-Choose a tool, select a HEIC and wait for conversion to finish. The selected photo bytes are decoded and converted locally in the browser instead of being uploaded to a conversion server. The website still loads its web resources. Read [how conversion works](/how-it-works/) for the current settings and limits.
+Choose a tool, select a HEIC, review the available settings and start conversion. The selected photo bytes are decoded and converted locally in the browser instead of being uploaded to a conversion server. The website still loads its web resources. Read [how conversion works](/how-it-works/) for the current settings and limits.
 
-The JPG, PNG and WebP tools create separate image files; **Download All** packages them in a ZIP. The PDF tool places photo images on PDF pages. There are no crop, resize or target-file-size controls. Review a small test before converting a large batch.
+The JPG, PNG and WebP tools create separate image files, with optional longest-edge resizing and adjustable JPG/WebP quality; **Download All as ZIP** packages the images in an archive. The PDF tool lets you arrange photos and choose photo proportions, A4 or Letter pages. There are no crop or exact target-file-size controls. Review a small test before converting a large batch.
 
 ## Should I stop taking HEIC photos?
 

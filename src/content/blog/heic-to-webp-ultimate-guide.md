@@ -11,19 +11,20 @@ updatedDate: '2026-11-02'
 
 Have an iPhone photo to put on a website? Start with the [HEIC to WebP converter](/heic-to-webp/) to make a WebP copy. Then check that your site accepts WebP and compare the result's appearance and file size before replacing an existing image.
 
-WebP supports both lossy and lossless encoding, but this site's converter uses a fixed lossy setting. It is a format converter, not a complete website image optimizer. It does not resize images, generate responsive variants or promise better search rankings.
+WebP supports both lossy and lossless encoding; this site's converter uses lossy encoding with an adjustable quality setting. You can also reduce the longest edge while keeping the photo's proportions. It does not generate responsive variants or promise better search rankings.
 
 ## Convert HEIC to WebP in the browser
 
-1. Open the [WebP conversion tool](/heic-to-webp/) and select **Choose files**.
-2. Choose one or more `.heic` photos. Conversion begins automatically.
-3. Select a finished preview to download its WebP image.
-4. For a batch, use **Download All** and extract the ZIP. Each source photo has its own output file, such as `image_1.webp`; the tool does not join photos together.
-5. Open the downloaded image and check it at the size you intend to display it.
+1. Open the [WebP conversion tool](/heic-to-webp/) and select **Choose HEIC photos**.
+2. Choose a **Quality setting** and, if needed, a maximum **Longest edge**. The default quality setting is 80.
+3. Choose one or more `.heic` photos, review the filenames and select **Convert to WebP**.
+4. Use a named download link to save a finished WebP image. The result card shows its dimensions and file size.
+5. For a batch, use **Download All as ZIP** and extract the archive. Each source photo has its own output file, such as `holiday.webp` from `holiday.heic`. Duplicate names receive numbered suffixes; the tool does not join photos together.
+6. Open the downloaded image and check it at the size you intend to display it.
 
 Selected photo bytes are processed locally in the browser rather than uploaded to a conversion server. Loading the website still involves normal web requests. Read [how the converter works](/how-it-works/) for the limits of this claim.
 
-The current WebP quality setting is 0.8. There is no quality slider or lossless-mode switch. That number is an encoder setting, not a claim that the result retains “80% of the quality.” If the result is unsuitable for fine text or detailed artwork, try another workflow with adjustable settings or use [PNG](/heic-to-png/) where appropriate.
+The quality slider runs from 10 to 100, with 80 selected by default. It controls an encoder setting, not a percentage of retained quality. There is no lossless-mode switch. If the result is unsuitable for fine text or detailed artwork, compare a higher setting or use [PNG](/heic-to-png/) where appropriate. Choose **Convert More** to try new settings with the original HEIC.
 
 ## Convert HEIC to WebP with FFmpeg
 
@@ -47,7 +48,7 @@ Do not assume it can. Google's [cwebp documentation](https://developers.google.c
 
 **Inspect the content that matters.** Look at faces, fine patterns, text and gradients at the intended display size. Check orientation and color as well. Preserve the original HEIC; a web derivative does not retain every source feature or metadata field.
 
-**Use the right dimensions.** A full-resolution camera image can be far larger than a small article thumbnail needs. This converter does not resize it. Use your image editor or website's image pipeline to create an appropriately sized version and responsive alternatives where needed.
+**Use the right dimensions.** A full-resolution camera image can be far larger than a small article thumbnail needs. Choose a maximum longest edge of 2560, 1920, 1280 or 800 pixels to reduce it while keeping its proportions. Smaller source images are not enlarged. Use your website's image pipeline for additional exact sizes and responsive alternatives.
 
 **Check your publishing system.** Confirm that the CMS or upload form accepts WebP, then view the published image in the browsers your audience uses. Add useful alternative text describing the image's purpose. A file conversion alone does not provide alt text or implement responsive HTML.
 
