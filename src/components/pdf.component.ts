@@ -62,6 +62,7 @@ import { PdfService } from "../services/pdf.service";
               </svg>
             </div>
             <button
+              (click)="fileInput.click()"
               class="bg-red-500 hover:bg-red-600 text-white px-8 py-2 rounded text-lg font-bold my-3"
             >
               Choose files
@@ -69,13 +70,14 @@ import { PdfService } from "../services/pdf.service";
             <input
               #fileInput
               type="file"
+              aria-label="Choose HEIC files"
               class="absolute w-full h-full z-10 opacity-0 cursor-pointer top-0"
               accept=".heic"
               (change)="onFilesChange($event)"
               multiple
             />
             <p class="text-sm text-center font-semibold text-red-500">
-              or drop files here
+              Select one or more HEIC photos
             </p>
             <p class="text-sm text-gray-500 mt-2"></p>
           </div>

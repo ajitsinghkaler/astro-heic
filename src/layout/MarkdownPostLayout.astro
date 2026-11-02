@@ -8,6 +8,7 @@ const schema = {
   '@graph': [
     { '@type': 'BlogPosting', headline: frontmatter.title, description: frontmatter.shortDescription,
       datePublished: new Date(frontmatter.date).toISOString(), url, mainEntityOfPage: url,
+      ...(frontmatter.updatedDate ? { dateModified: new Date(frontmatter.updatedDate).toISOString() } : {}),
       image: new URL(frontmatter.coverOgImage, Astro.site).toString(), inLanguage: 'en',
       author: { '@type': 'Organization', name: 'Online HEIC Convert', url: Astro.site?.toString() },
       publisher: { '@type': 'Organization', name: 'Online HEIC Convert', url: Astro.site?.toString() } },
@@ -36,13 +37,14 @@ const schema = {
         {frontmatter.shortDescription}
       </p>
       <p class="text-center mt-2 text-zinc-700 text-sm">
-        Online HEIC Convert · {
+        Online HEIC Convert · Published {
           new Date(frontmatter.date).toLocaleDateString("en-us", {
             year: "numeric",
             month: "short",
             day: "numeric",
           })
         }
+        {frontmatter.updatedDate && <span> · Updated <time datetime={frontmatter.updatedDate}>{new Date(frontmatter.updatedDate).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })}</time></span>}
       </p>
       <div class="relative mt-6">
         <Image

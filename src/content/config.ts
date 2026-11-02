@@ -6,6 +6,7 @@ const blogCollection = defineCollection({
     z.object({
       title: z.string(),
       date: z.string(),
+      updatedDate: z.string().optional(),
       shortDescription: z.string(),
       coverImage: image(),
       coverAlt: z.string(),

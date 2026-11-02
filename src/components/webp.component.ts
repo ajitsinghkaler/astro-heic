@@ -67,6 +67,7 @@ import type { ImageBlobUrls } from "../services/image-blob-urls";
               </svg>
             </div>
             <button
+              (click)="fileInput.click()"
               class="bg-purple-500 hover:bg-purple-600 text-white px-8 py-2 rounded text-lg font-bold my-3"
             >
               Choose files
@@ -74,13 +75,14 @@ import type { ImageBlobUrls } from "../services/image-blob-urls";
             <input
               #fileInput
               type="file"
+              aria-label="Choose HEIC files"
               class="absolute w-full h-full z-10 opacity-0 cursor-pointer top-0"
               accept=".heic"
               (change)="onFilesChange($event)"
               multiple
             />
             <p class="text-sm text-center font-semibold text-purple-500">
-              or drop files here
+              Select one or more HEIC photos
             </p>
             <p class="text-sm text-gray-500 mt-2"></p>
           </div>
@@ -113,11 +115,11 @@ import type { ImageBlobUrls } from "../services/image-blob-urls";
           <div class="flex flex-wrap gap-4 justify-center md:justify-normal">
             @for(urlInfo of imageBlobUrls(); track idx; let idx = $index){
             <div>
-              <a [href]="urlInfo.url" [download]="urlInfo.name">
+              <a [href]="urlInfo.url" [download]="urlInfo.name" [attr.aria-label]="'Download ' + urlInfo.name">
                 <div
                   class="h-20 w-20 relative flex items-center justify-center group rounded overflow-hidden"
                 >
-                  <img [src]="urlInfo.url" class="w-full h-full object-cover" />
+                  <img [src]="urlInfo.url" [alt]="'Converted preview: ' + urlInfo.name" class="w-full h-full object-cover" />
                   <div class="absolute bg-white rounded-full p-2">
                     <svg
                       class="w-6"

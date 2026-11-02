@@ -10,6 +10,7 @@ export default defineConfig({
     prefetchAll: true
   },
   integrations: [tailwind(), angular(), sitemap({
+    filter: page => !/^\/404(?:\.html|\/)?$/.test(new URL(page).pathname),
     serialize: route => {
       if (route.url === 'https://onlineheicconvert.com/privacy/' || route.url === 'https://onlineheicconvert.com/tos/') {
         route.priority = 0.5;

@@ -14,52 +14,28 @@ export class PdfService {
     });
   }
   async convertToPdf(files: File[]): Promise<string> {
+    if (!files.length) {
+      throw new Error("Select at least one HEIC photo");
+    }
     const { heicTo } = await import("heic-to");
     const pdf = new jsPDF();
-    const imagePromises = files.map((file, index) => {
-      return new Promise<void>(async (resolve, reject) => {
-        try {
-          const blob = await heicTo({
-            blob: file,
-            type: "image/jpeg",
-            quality: 0.92,
-          });
-          const imgData = await this.blobToDataUrl(blob);
-          const img = new Image();
-          img.onload = () => {
-            // Calculate dimensions from pixels to points
-            const pageWidth = img.width * (72 / 96); // convert pixels to points
-            const pageHeight = img.height * (72 / 96);
-
-            let orientation: "portrait" | "landscape" = "portrait";
-
-            if (pageWidth > pageHeight) {
-              orientation = "landscape";
-            }
-            // Remove the auto-created empty page
-            if (index === 0) {
-              pdf.deletePage(1);
-            }
-
-            // Add a new page with the image dimensions
-            pdf.addPage([pageWidth, pageHeight], orientation);
-
-            // Add the image to the new page at its original size
-            pdf.addImage(imgData, "JPEG", 0, 0, pageWidth, pageHeight);
-            resolve();
-          };
-          img.onerror = () => {
-            reject(new Error("Failed to load image"));
-          };
-          img.src = imgData;
-        } catch (error) {
-          reject(error);
-        }
+    // Decode and append sequentially so completion timing cannot reorder pages.
+    for (const [index, file] of files.entries()) {
+      const blob = await heicTo({ blob: file, type: "image/jpeg", quality: 0.92 });
+      const imgData = await this.blobToDataUrl(blob);
+      const img = new Image();
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error("Failed to load image"));
+        img.src = imgData;
       });
-    });
-
-    // Wait for all images to be processed and added to the PDF
-    await Promise.all(imagePromises);
+      const pageWidth = img.width * (72 / 96);
+      const pageHeight = img.height * (72 / 96);
+      const orientation = pageWidth > pageHeight ? "landscape" : "portrait";
+      if (index === 0) pdf.deletePage(1);
+      pdf.addPage([pageWidth, pageHeight], orientation);
+      pdf.addImage(imgData, "JPEG", 0, 0, pageWidth, pageHeight);
+    }
     const pdfBlob = pdf.output("blob");
     return URL.createObjectURL(pdfBlob);
   }

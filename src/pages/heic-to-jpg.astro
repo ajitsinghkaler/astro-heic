@@ -1,71 +1,36 @@
 ---
 import { JpgComponent } from "../components/jpg.component";
 import Layout from "../layout/Layout.astro";
-const title = 'Convert HEIC to JPG for free';
-const description =
-  "HEIC to JPEG: Quickly convert HEIC files to JPEG for broad compatibility with image editing tools and web usage, ensuring privacy with on-device processing.";
+const title = 'Convert HEIC to JPG Online — Individual Photos or Batch ZIP';
+const description = 'Convert HEIC photos to JPG in your browser. Save individual JPEG images or a batch ZIP, with local photo processing and no account.';
 const ogImage = "/og-image/heic-to-jpg.png";
-const ogTitle = "HEIC to JPG: Convert HEIC to high-quality JPGs for free.";
 ---
 
-<Layout
-  title={title}
-  description={description}
-  ogImage={ogImage}
-  ogTitle={ogTitle}
->
+<Layout title={title} description={description} ogImage={ogImage} ogTitle={title}>
   <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-center font-bold text-4xl mt-12 mb-8">
-      Convert HEIC to JPG
-    </h1>
+    <h1 class="text-center font-bold text-4xl mt-12 mb-5">Convert HEIC to JPG</h1>
+    <p class="text-center text-zinc-700 mb-8">Make JPEG copies for a recipient or form that accepts JPG. Each selected HEIC becomes a separate JPG; Download All packages the images in a ZIP.</p>
     <JpgComponent client:visible />
-    <div class="mt-20">
-      <h2 class="text-2xl font-bold mb-8 text-center">HEIC to JPG Features</h2>
-      <ul class="space-y-4">
-        <li>
-          <strong>HEIC to JPEG Converter:</strong> Convert HEIC files to high-quality
-          JPEG in seconds.
-        </li>
-        <li>
-          <strong>Convert HEIC to JPEG on iPhone:</strong> Easily change HEIC images
-          to JPEG format on your iPhone.
-        </li>
-        <li>
-          <strong>Multiple HEIC to JPEG:</strong> Batch process several HEIC files
-          into JPEGs simultaneously.
-        </li>
-        <li>
-          <strong>Merge HEIC to JPEG:</strong> Combine multiple HEIC images into
-          a single JPEG file.
-        </li>
-        <li>
-          <strong>Free HEIC to JPEG Converter:</strong> Enjoy our HEIC to JPEG conversion
-          service absolutely free.
-        </li>
-        <li>
-          <strong>Convert HEIC File to JPEG Free Online:</strong> Use our online
-          tool to convert HEIC files to JPEG without any charge.
-        </li>
-      </ul>
-    </div>
-    <div class="my-20">
-      <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
-        Why Convert HEIC to JPEG
-      </h2>
-      <p class="text-pretty">
-        Converting HEIC files to JPG is a smart move for several reasons. JPG is
-        one of the most widely used image formats, compatible with virtually all
-        devices and platforms. This means your photos will be easily viewable
-        and shareable without any compatibility issues. Using our converter, you
-        can quickly and effortlessly change HEIC to JPG, whether you're on an
-        iPhone, Mac, or Windows device. Our tool supports batch conversion,
-        allowing you to convert multiple HEIC files to JPG at once, saving you
-        valuable time. Additionally, our service is completely free and operates
-        securely on your device, ensuring that your data stays private. Whether
-        you need to convert HEIC files to JPG for editing, sharing, or simply
-        viewing on different devices, our converter makes the process simple and
-        efficient.
-      </p>
-    </div>
+    <section class="mt-12 mb-10 prose max-w-none" aria-labelledby="conversion-steps">
+      <h2 id="conversion-steps">How to convert HEIC to JPG</h2>
+      <ol>
+        <li>Choose <strong>Choose files</strong> and select the HEIC photos on your device.</li>
+        <li>Wait for conversion to finish. It starts automatically after selection.</li>
+        <li>Select a finished preview to save that image, or choose Download All for a ZIP of the separate results.</li>
+        <li>Check the downloaded result before sharing it. Choose <strong>Convert More</strong> to start another batch.</li>
+      </ol>
+      <p>Selected photo bytes are processed locally in your browser rather than uploaded to a conversion server. The website still loads its scripts and other web resources. No account or conversion fee is required.</p>
+      <p>For alternatives and troubleshooting, read the <a href="/blog/heic-to-jpg/">HEIC to JPG guide</a> and <a href="/how-it-works/">how conversion works</a>.</p>
+    </section>
+    <section class="prose max-w-none mb-10" aria-labelledby="conversion-limits">
+      <h2 id="conversion-limits">What to check before using the result</h2>
+      <p>JPEG uses lossy compression. This converter uses a fixed quality setting and has no quality slider, resize or target-file-size controls. The result is a sharing copy rather than a complete archive of the HEIC and its metadata.</p>
+      <p>Large photos or batches can need substantial memory. If conversion fails, try a single complete HEIC file, then a smaller batch. Support can vary with the HEIC variant, browser and available device memory.</p>
+    </section>
+    <section class="prose max-w-none mb-16" aria-labelledby="format-choice">
+      <h2 id="format-choice">When to choose JPG</h2>
+      <p>Check the recipient's accepted formats, maximum file size and pixel dimensions. JPG and JPEG are the same image format, but changing a HEIC filename to .jpg does not convert it. Open the downloaded file and keep your source photo.</p>
+      <p>Compare <a href="/blog/heic-jpg-png-pdf-which-format/">JPG, PNG, WebP and PDF</a>, or use the <a href="/blog/heic-photo-upload-not-supported/">photo upload checklist</a> if a form still rejects your file.</p>
+    </section>
   </div>
 </Layout>

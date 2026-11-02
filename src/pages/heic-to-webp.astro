@@ -1,71 +1,36 @@
 ---
 import { WebpComponent } from "../components/webp.component";
 import Layout from "../layout/Layout.astro";
-const title = "Convert HEIC to WEBP for free";
-const description =
-  "HEIC to WebP: Optimize your images by converting HEIC files to WebP format, ensuring faster loading times and reduced file sizes, directly on your device.";
+const title = 'Convert HEIC to WebP Online — Photos for Your Website';
+const description = 'Convert HEIC photos to WebP locally in your browser. Download individual images or a ZIP, then compare quality and file size before publishing.';
 const ogImage = "/og-image/heic-to-webp.png";
-const ogTitle = "HEIC to WEBP: Convert HEIC to high-quality WEBPs for free.";
 ---
 
-<Layout
-  title={title}
-  description={description}
-  ogImage={ogImage}
-  ogTitle={ogTitle}
->
+<Layout title={title} description={description} ogImage={ogImage} ogTitle={title}>
   <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-center font-bold text-4xl mt-12 mb-8">
-      Convert HEIC to WEBP
-    </h1>
+    <h1 class="text-center font-bold text-4xl mt-12 mb-5">Convert HEIC to WebP</h1>
+    <p class="text-center text-zinc-700 mb-8">Make a WebP copy for a website or app that accepts it. Each selected HEIC becomes a separate WebP image; Download All packages the images in a ZIP.</p>
     <WebpComponent client:visible />
-    <div class="mt-20">
-      <h2 class="text-2xl font-bold mb-8 text-center">HEIC to WEBP Features</h2>
-      <ul class="space-y-4">
-        <li>
-          <strong>HEIC to WebP Converter:</strong> Convert HEIC images to WebP for
-          optimized web usage.
-        </li>
-        <li>
-          <strong>Convert HEIC to WebP on iPhone:</strong> Directly convert your
-          HEIC files to WebP on your iPhone.
-        </li>
-        <li>
-          <strong>Multiple HEIC to WebP:</strong> Batch convert multiple HEIC images
-          to WebP.
-        </li>
-        <li>
-          <strong>Merge HEIC to WebP:</strong> Easily merge several HEIC files into
-          a single WebP file.
-        </li>
-        <li>
-          <strong>Free HEIC to WebP Converter:</strong> Convert your HEIC files to
-          WebP at no cost.
-        </li>
-        <li>
-          <strong>Convert HEIC File to WebP Free Online:</strong> Use our online
-          tool to freely convert HEIC to WebP.
-        </li>
-      </ul>
-    </div>
-    <div class="my-20">
-      <h2 class="text-2xl font-bold mb-8 text-center">
-        Why Convert HEIC to WEBP
-      </h2>
-      <p class="text-pretty">
-        Converting HEIC files to WebP is a smart choice if you want to optimize
-        your images for the web. WebP is a modern image format that provides
-        superior compression, resulting in smaller file sizes without
-        compromising on quality. This makes your website load faster and
-        improves the overall user experience. Our HEIC to WebP converter is easy
-        to use and works on iPhone, Mac, Windows, and other devices. You can
-        batch convert multiple HEIC files to WebP quickly and efficiently.
-        Additionally, our service is completely free and processes all
-        conversions on your device, ensuring your data remains secure and
-        private. Whether you are a web developer looking to enhance site
-        performance or a user wanting to share images online, converting HEIC to
-        WebP is an excellent option.
-      </p>
-    </div>
+    <section class="mt-12 mb-10 prose max-w-none" aria-labelledby="conversion-steps">
+      <h2 id="conversion-steps">How to convert HEIC to WebP</h2>
+      <ol>
+        <li>Choose <strong>Choose files</strong> and select the HEIC photos on your device.</li>
+        <li>Wait for conversion to finish. It starts automatically after selection.</li>
+        <li>Select a finished preview to save that image, or choose Download All for a ZIP of the separate results.</li>
+        <li>Check the downloaded result before sharing it. Choose <strong>Convert More</strong> to start another batch.</li>
+      </ol>
+      <p>Selected photo bytes are processed locally in your browser rather than uploaded to a conversion server. The website still loads its scripts and other web resources. No account or conversion fee is required.</p>
+      <p>For alternatives and troubleshooting, read the <a href="/blog/heic-to-webp-ultimate-guide/">HEIC to WebP guide</a> and <a href="/how-it-works/">how conversion works</a>.</p>
+    </section>
+    <section class="prose max-w-none mb-10" aria-labelledby="conversion-limits">
+      <h2 id="conversion-limits">What to check before using the result</h2>
+      <p>This tool uses a fixed lossy WebP quality setting of 0.8. It has no lossless-mode switch, quality slider or resizing controls. WebP output is not guaranteed to be smaller than your HEIC or an existing website image.</p>
+      <p>Large photos or batches can need substantial memory. If conversion fails, try a single complete HEIC file, then a smaller batch. Support can vary with the HEIC variant, browser and available device memory.</p>
+    </section>
+    <section class="prose max-w-none mb-16" aria-labelledby="format-choice">
+      <h2 id="format-choice">When to choose WebP</h2>
+      <p>Inspect color, orientation and fine details at the size you intend to display. Compare actual file sizes, check that your publishing system accepts WebP, and resize with your editor or image pipeline if needed. Keep the original HEIC.</p>
+      <p>Compare <a href="/blog/heic-jpg-png-pdf-which-format/">JPG, PNG, WebP and PDF</a>, or use the <a href="/blog/heic-photo-upload-not-supported/">photo upload checklist</a> if a form still rejects your file.</p>
+    </section>
   </div>
 </Layout>

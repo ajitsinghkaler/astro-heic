@@ -2,14 +2,14 @@
 import Layout from "../../layout/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-const posts = (await getCollection("blog")).sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+const posts = (await getCollection("blog")).sort((a, b) => Date.parse(b.data.updatedDate ?? b.data.date) - Date.parse(a.data.updatedDate ?? a.data.date));
 
 const description =
-  "Heic Converter Blog - Your source for insights on HEIC conversion to various formats in a secure, reliable way that ensures privacy by on-device conversion.";
+  "Practical HEIC conversion guides: choose JPG, PNG, WebP or PDF, follow clear steps and check the downloaded result before sharing or uploading it.";
 const ogImage = "/og-image/blog.png";
-const title = "Heic Converter Blog: Conversion made Simple, Secure and Private";
+const title = "HEIC Conversion Guides: JPG, PNG, WebP and PDF";
 const ogTitle =
-  "Heic Converter Blog: HEIC Conversion made Simple, Secure and Private";
+  title;
 ---
 
 <Layout
@@ -19,7 +19,8 @@ const ogTitle =
   ogTitle={ogTitle}
 >
   <div class="max-w-4xl mx-auto px-4">
-    <h1 class="font-bold text-3xl my-8 text-center">Blog</h1>
+    <h1 class="font-bold text-3xl my-8 text-center">HEIC conversion guides</h1>
+    <p class="text-center text-zinc-700 mb-8">Choose a format, follow the steps and check the result. Start with the <a class="underline" href="/blog/heic-jpg-png-pdf-which-format/">format comparison</a> or the <a class="underline" href="/blog/heic-photo-upload-not-supported/">photo upload checklist</a>.</p>
     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-20">
       {
         posts.map((post) => (
@@ -31,6 +32,7 @@ const ogTitle =
                 <p class="text-sm text-gray-500 mt-1 line-clamp-3">
                   {post.data.shortDescription}
                 </p>
+                {post.data.updatedDate && <p class="text-sm text-zinc-600 mt-3">Updated <time datetime={post.data.updatedDate}>{new Date(post.data.updatedDate).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })}</time></p>}
               </div>
             </div>
           </a>
